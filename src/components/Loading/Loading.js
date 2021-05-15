@@ -1,10 +1,11 @@
 import React from "react";
 
 const Loading = ({ isLoading, finishLoading }) => {
+  // Fake load
   if (isLoading) {
     setTimeout(() => {
       finishLoading();
-    }, 2500);
+    }, 1000);
   }
   return (
     <main className="not-found-container">

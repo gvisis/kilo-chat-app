@@ -1,5 +1,5 @@
 import React from "react";
-import {FaPaperPlane} from 'react-icons/fa';
+import { FaPaperPlane } from "react-icons/fa";
 
 function ChatWindow() {
   return (
@@ -23,7 +23,7 @@ function ChatWindow() {
             odit atque tempore quo quidem, doloribus dolor rerum dolores odio
             minus placeat debitis dicta voluptas animi adipisci id! Veritatis,
             delectus dolore!
-          <div className="message-time">14:46 PM</div>
+            <div className="message-time">14:46 PM</div>
           </div>
         </div>
 
@@ -46,9 +46,9 @@ function ChatWindow() {
           />
           <div className="message-text">
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptates
-            odit atque tempore quo quid placeat debitis dicta voluptas animi adipisci id! Veritatis,
-            delectus dolore!
-          <div className="message-time">14:46 PM</div>
+            odit atque tempore quo quid placeat debitis dicta voluptas animi
+            adipisci id! Veritatis, delectus dolore!
+            <div className="message-time">14:46 PM</div>
           </div>
         </div>
       </main>

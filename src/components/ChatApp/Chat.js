@@ -5,10 +5,9 @@ import Loading from "../Loading/Loading";
 
 // import Profile from "../Profile/Profile";
 
-function ChatApp({isLoading, finishLoading}) {
-
-  if (isLoading){
-    return <Loading isLoading={isLoading} finishLoading={finishLoading}/>
+function ChatApp({ isLoading, finishLoading }) {
+  if (isLoading) {
+    return <Loading isLoading={isLoading} finishLoading={finishLoading} />;
   }
 
   return (
