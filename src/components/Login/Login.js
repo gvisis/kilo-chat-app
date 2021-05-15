@@ -3,7 +3,7 @@ import "../../sass/login.scss";
 import { React, useState, useEffect } from "react";
 import { FaEnvelope, FaKey } from "react-icons/fa";
 
-function Login({ isLoggedIn, userLogin }) {
+function Login({ isLoggedIn, userLogin, isError }) {
   const loginIcons = {
     color: "#29c0cd",
     width: "32px",
@@ -16,8 +16,8 @@ function Login({ isLoggedIn, userLogin }) {
 
   // Sending data to check for email
   const sendData = (e) => {
-    userLogin(userEmail, userPassword);
     e.preventDefault();
+    userLogin(userEmail, userPassword);
   };
 
   return (
@@ -30,18 +30,32 @@ function Login({ isLoggedIn, userLogin }) {
           <label className="input-title">E-mail</label>
           <div className="input-container">
             <FaEnvelope style={loginIcons} />
-            <input type="text" onChange={(e) => {setUserEmail(e.target.value)}}/>
+            <input
+              type="text"
+              onChange={(e) => {
+                setUserEmail(e.target.value);
+              }}
+            />
           </div>
+          {isError && <div className="error-login">{isError}</div>}
         </div>
         <div className="login-row pass">
           <label className="input-title">Password</label>
           <div className="input-container">
             <FaKey style={loginIcons} />
-            <input type="password" onChange={(e) => {setUserPassword(e.target.value)}}/>
+            <input
+              type="password"
+              onChange={(e) => {
+                setUserPassword(e.target.value);
+              }}
+            />
           </div>
+          {isError && <div className="error-login">{isError}</div>}
         </div>
         <div className="buttons">
-          <button type="submit" className="btn btn-login">Login</button>
+          <button type="submit" className="btn btn-login">
+            Login
+          </button>
         </div>
       </form>
     </main>
