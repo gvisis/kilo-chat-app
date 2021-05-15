@@ -10,26 +10,32 @@ function Login() {
     color: "#29c0cd",
     width: "32px",
     height: "32px",
-    margin: "1rem",
+    opacity: "60%",
+    padding: '10px'
   };
 
   return (
-    <main className='login-main'>
+    <main className="login-main">
       <div className="login-wrap">
         <div className="login-header">
-          <span className="login_title-text">Login text</span>
+          <span className="login_title-text">Login</span>
         </div>
         <div className="login-row email">
-          <FaEnvelope style={loginIcons} />
-          <input type="text" />
+            <label className="input-title">E-mail</label>
+          <div className="input-container">
+            <FaEnvelope style={loginIcons} />
+            <input type="text" />
+          </div>
         </div>
         <div className="login-row pass">
+            <label className="input-title">Password</label>
+          <div className="input-container">
           <FaKey style={loginIcons} />
-          <input type="password" />
+            <input type="password" />
+          </div>
         </div>
         <div className="buttons">
           <div className="btn btn-login">Login</div>
-          <div className="btn btn-reset">Reset</div>
         </div>
       </div>
     </main>
