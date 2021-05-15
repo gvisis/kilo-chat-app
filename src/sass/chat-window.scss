@@ -46,7 +46,7 @@
       flex-direction: row;
       align-items: flex-start;
       font-size: 0.9rem;
-      margin-bottom: 15px;
+      margin-bottom: 20px;
     }
 
     img {
@@ -64,38 +64,66 @@
       border-radius: 15px;
       padding: 10px;
       z-index: 1;
+      max-width: 60%;
     }
     .message-time {
-      margin-top: 10px;
-      padding: 0 20px;
-      font-size: 0.6rem;
+        margin-top: 10px;
+        padding: 0 10px;
+        font-size: 0.6rem;
+        order: 3;
+      }
+    @mixin pseudo-message-el {
+      position: absolute;
+      content: "";
+      top: 0;
+      width: 20px;
+      height: 20px;
+      z-index: -1;
     }
+    // Styling for other messages
+    .other_message {
+      justify-content: flex-start;
+      img.img_other {
+        order: 1;
+      }
+      .message-text {
+        background-color: $light-periwinkle;
+        order: 2;
+        &::after {
+          @include pseudo-message-el;
+          left: -8px;
+          border-radius: 0 0 0 20px;
+          background-color: $light-periwinkle;
+        }
+      }
+      .message-time {
+        text-align: right;
+    }
+    }
+
+    // Styling for user messages
+    .user_message {
+      justify-content: flex-end;
+      img.img_user {
+        order: 2;
+      }
+      .message-text {
+        background-color: $platinum;
+        order: 1;
+        &::after {
+          @include pseudo-message-el;
+          right: -8px;
+          border-radius: 0 0 20px 0;
+          background-color: $platinum;
+        }
+      }
+      .message-time {
+          text-align: left;
+      }
+    }
+
     .chat_container-send {
       background-color: lightsalmon;
     }
   }
 }
-
-// &::after{
-//     position: absolute;
-//     content: "";
-//     top: 0;
-//     left: -8px;
-//     width: 20px;
-//     height: 20px;
-//     border-radius: 0 0 0 20px;
-//     background-color: $light-periwinkle;
-//     z-index: -1;
-//   }
-// }
-//   &::before {
-//     position: absolute;
-//     content: "";
-//     top: 0;
-//     right: -8px;
-//     width: 20px;
-//     height: 20px;
-//     border-radius: 0 0 20px 0;
-//     background-color: $platinum;
-//   }
-// }
