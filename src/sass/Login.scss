@@ -1,14 +1,5 @@
 @import "../global";
 
-.container {
-  background: rgb(55, 205, 218);
-  background: linear-gradient(
-    90deg,
-    rgba(55, 205, 218, 1) 0%,
-    rgba(38, 191, 204, 1) 33%,
-    rgba(39, 172, 184, 1) 100%
-  );
-}
 .login-main {
   .login-wrap {
     background-color: #fff;
@@ -92,7 +83,7 @@
 
 @media only screen and (min-width: 768px) {
   .login-main {
-    grid-column: 2 / span 4;
+    grid-column: 4 / span 6;
     grid-row: 2;
   }
   .login-wrap .buttons > .btn.btn-login {
@@ -101,7 +92,6 @@
 }
 @media only screen and (min-width: 1024px) {
   .login-main {
-    grid-column: 3 / span 2;
-    grid-row: 2;
+    grid-column: 5 / span 4;
   }
 }
