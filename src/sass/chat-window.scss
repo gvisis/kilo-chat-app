@@ -1,4 +1,101 @@
-.chat-container {
-    background-color: $platinum;
-    grid-column: auto / span 7;
+.padding-10 {
+  padding: 10px;
 }
+@mixin fontMontserrat {
+  font-family: "Montserrat", sans-serif;
+}
+.chat_container {
+  background-color: $white;
+  grid-column: auto / span 9;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  @include fontMontserrat;
+
+  .chat_container-title {
+    border-bottom: 1px solid $light-periwinkle;
+  }
+  .chat_user-active {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 10px 0;
+
+    .chat_user-active-name {
+      font-size: 1.2rem;
+      font-weight: 500;
+      margin-right: 10px;
+    }
+    .chat_user-active-status {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      margin: 10px 5px;
+      background-color: lawngreen;
+    }
+    span {
+      font-size: 0.7rem;
+    }
+  }
+  .chat_container-messages {
+    height: 100%;
+
+    .message {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      font-size: 0.9rem;
+      margin-bottom: 15px;
+    }
+
+    img {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      margin: 0 15px;
+    }
+
+    .message-text {
+      position: relative;
+      word-wrap: break-word;
+      width: fit-content;
+      padding: 10px;
+      border-radius: 15px;
+      padding: 10px;
+      z-index: 1;
+    }
+    .message-time {
+      margin-top: 10px;
+      padding: 0 20px;
+      font-size: 0.6rem;
+    }
+    .chat_container-send {
+      background-color: lightsalmon;
+    }
+  }
+}
+
+// &::after{
+//     position: absolute;
+//     content: "";
+//     top: 0;
+//     left: -8px;
+//     width: 20px;
+//     height: 20px;
+//     border-radius: 0 0 0 20px;
+//     background-color: $light-periwinkle;
+//     z-index: -1;
+//   }
+// }
+//   &::before {
+//     position: absolute;
+//     content: "";
+//     top: 0;
+//     right: -8px;
+//     width: 20px;
+//     height: 20px;
+//     border-radius: 0 0 20px 0;
+//     background-color: $platinum;
+//   }
+// }

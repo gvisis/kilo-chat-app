@@ -3,7 +3,7 @@ import { FaEdit,FaSignOutAlt } from "react-icons/fa";
 // https://randomuser.me/documentation#howto
 function Sidebar() {
     const editIconStyle = {
-        marginRight: '10px',
+        marginRight: '5px',
     }
   return (
     <aside className="convo-list">
@@ -13,7 +13,7 @@ function Sidebar() {
         <span className="profile-status">Newfoundland</span>
         <div className="profile-edit">
           <FaEdit style={editIconStyle}/>
-          <span>Edit Profile</span>
+          <span>Edit</span>
         </div>
       </div>
       <div className="sidebar_chat">
@@ -36,7 +36,7 @@ function Sidebar() {
           </div>
         </div>
       </div>
-      <div className="convo-list_logout">
+      <div className="convo_list-logout">
           <FaSignOutAlt />
           <span>Logout</span>
       </div>
