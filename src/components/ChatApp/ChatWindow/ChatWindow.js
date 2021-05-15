@@ -1,4 +1,5 @@
 import React from "react";
+import {FaPaperPlane} from 'react-icons/fa';
 
 function ChatWindow() {
   return (
@@ -51,7 +52,12 @@ function ChatWindow() {
           </div>
         </div>
       </main>
-      <footer className="chat_container-send padding-10">footer</footer>
+      <footer className="chat_container-send padding-10">
+        <div className="chat_container-input">
+          <input type="text" />
+          <FaPaperPlane />
+        </div>
+      </footer>
     </section>
   );
 }

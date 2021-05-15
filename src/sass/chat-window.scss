@@ -67,11 +67,11 @@
       max-width: 60%;
     }
     .message-time {
-        margin-top: 10px;
-        padding: 0 10px;
-        font-size: 0.6rem;
-        order: 3;
-      }
+      margin-top: 10px;
+      padding: 0 10px;
+      font-size: 0.6rem;
+      order: 3;
+    }
     @mixin pseudo-message-el {
       position: absolute;
       content: "";
@@ -98,7 +98,7 @@
       }
       .message-time {
         text-align: right;
-    }
+      }
     }
 
     // Styling for user messages
@@ -118,12 +118,39 @@
         }
       }
       .message-time {
-          text-align: left;
+        text-align: left;
       }
     }
+  }
+  .chat_container-send {
+    border-radius: 10px 0 0 0;
+    border-top: 1px solid $light-blue;
 
-    .chat_container-send {
-      background-color: lightsalmon;
+    .chat_container-input {
+      padding: 0 15px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 1.4rem;
+      input {
+          border:none;
+          border-radius: 10px;
+          outline-color: $white;
+          width: 100%;
+          height: 1.5rem;
+          font-size: 0.9rem;
+          padding: 5px 10px;
+          @include fontMontserrat;
+      }
+      svg {
+        padding: 5px 10px;
+        color: $darker-blue;
+        &:hover,
+        &:active {
+          cursor: pointer;
+          color: darken($darker-blue, 10%);
+        }
+      }
     }
   }
 }

@@ -1,5 +1,5 @@
 aside.convo-list {
-  background-color: $light-periwinkle;
+  background-color: $white;
   grid-column: auto / span 3;
   display: flex;
   flex-direction: column;
@@ -20,27 +20,11 @@ aside.convo-list {
   border-radius: 0 0 15px 15px;
   @include margin-bottom;
 
-
-  img {
-    width: 80px;
-    height: 80px;
-    margin-bottom: 0.5rem;
-    border-radius: 50%;
-    border: 5px solid $light-pink;
-
-  }
-  .profile-name {
-    font-weight: 600;
-    font-size: 1rem;
-    text-transform: uppercase;
-    @include margin-bottom;
-  }
-  .profile-status {
-    font-size: 0.8rem;
-    @include margin-bottom;
-  }
-
   .profile-edit {
+    display: none;
+  }
+
+  &:hover .profile-edit {
     position: absolute;
     top: 0;
     left: 0;
@@ -55,11 +39,29 @@ aside.convo-list {
       color: $blue-yonder;
     }
   }
+  
+  img {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 0.5rem;
+    border-radius: 50%;
+    border: 5px solid $light-pink;
+  }
+  .profile-name {
+    font-weight: 600;
+    font-size: 1rem;
+    text-transform: uppercase;
+    @include margin-bottom;
+  }
+  .profile-status {
+    font-size: 0.8rem;
+    @include margin-bottom;
+  }
 }
 .sidebar_chat {
   border-radius: 15px;
   padding: 5px;
-  background-color: $white;
+  background-color: #e3f6fc;
   height: inherit;
   @include margin-bottom;
 
@@ -69,16 +71,22 @@ aside.convo-list {
     justify-content: flex-start;
     align-items: center;
     padding: 10px;
-    
-    &:hover {
+    margin-bottom: 5px;
+
+    &:hover,
+    &:active {
       border-radius: 15px;
       background-color: $darker-blue;
       color: $white;
       box-shadow: 0px 0px 20px #60719681;
+      cursor: pointer;
+    }
+    &:active {
+      background-color: lighten($darker-blue, 10%);
     }
     .profile-img {
-      width: 42px;
-      height: 42px;
+      width: 32px;
+      height: 32px;
       border-radius: 50%;
       border: 3px solid $maximum-blue-green;
       margin-right: 10px;
@@ -89,18 +97,18 @@ aside.convo-list {
       width: 100%;
     }
     .chat_user-name {
+      font-size: 0.9rem;
       font-weight: 500;
       margin-bottom: 10px;
-
     }
     .chat_user-message {
-      font-size: 0.8rem;
+      font-size: 0.7rem;
     }
   }
 }
 .convo_list-logout {
-  text-align: center;
+  text-align: left;
   background-color: $light-blue;
   border-radius: 15px 15px 0 0;
-  padding: 15px;
+  padding: 10px;
 }
