@@ -1,11 +1,11 @@
-import "../../sass/Login.scss";
+import "../../sass/login.scss";
 
 import { React, useState, useEffect } from "react";
 import { FaEnvelope, FaKey } from "react-icons/fa";
 
-function Login() {
-  //   const [isLogged, setIsLogged] = useState(false);
-  //   const [isError, setIsErorr] = useState(false);
+function Login({isLoggedIn, userLogin}) {
+  console.log(isLoggedIn);
+  
   const loginIcons = {
     color: "#29c0cd",
     width: "32px",
@@ -35,7 +35,7 @@ function Login() {
           </div>
         </div>
         <div className="buttons">
-          <div className="btn btn-login">Login</div>
+          <button onClick={() => userLogin()} className="btn btn-login">Login</button>
         </div>
       </div>
     </main>

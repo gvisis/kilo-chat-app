@@ -88,6 +88,7 @@
       }
       .message-text {
         background-color: $light-periwinkle;
+        color: $main-color;
         order: 2;
         &::after {
           @include pseudo-message-el;
@@ -127,20 +128,20 @@
     border-top: 1px solid $light-blue;
 
     .chat_container-input {
-      padding: 0 15px;
+      padding: 0 5px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       font-size: 1.4rem;
       input {
-          border:none;
-          border-radius: 10px;
-          outline-color: $white;
-          width: 100%;
-          height: 1.5rem;
-          font-size: 0.9rem;
-          padding: 5px 10px;
-          @include fontMontserrat;
+        border: none;
+        border-radius: 10px;
+        outline-color: $white;
+        width: 100%;
+        height: 1.4rem;
+        font-size: 0.9rem;
+        padding: 5px;
+        @include fontMontserrat;
       }
       svg {
         padding: 5px 10px;

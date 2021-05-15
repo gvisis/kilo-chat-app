@@ -1,9 +1,16 @@
 import React from "react";
 import Sidebar from "./Sidebar/Sidebar";
 import ChatWindow from "./ChatWindow/ChatWindow";
-import Profile from "../Profile/Profile";
+import Loading from "../Loading/Loading";
 
-function ChatApp() {
+// import Profile from "../Profile/Profile";
+
+function ChatApp({isLoading, finishLoading}) {
+
+  if (isLoading){
+    return <Loading isLoading={isLoading} finishLoading={finishLoading}/>
+  }
+
   return (
     <>
       <Sidebar />
