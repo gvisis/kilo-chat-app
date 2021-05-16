@@ -1,10 +1,11 @@
 import React from "react";
 
-const Loading = ({ isLoading, finishLoading }) => {
+const Loading = ({ isLoading, setLoadingState }) => {
+  
   // Fake load
-  if (isLoading) {
+    if (isLoading) {
     setTimeout(() => {
-      finishLoading();
+      setLoadingState(false);
     }, 1000);
   }
   return (

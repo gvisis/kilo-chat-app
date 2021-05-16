@@ -1,12 +1,17 @@
 import React from "react";
 import { FaPaperPlane } from "react-icons/fa";
 
-function ChatWindow() {
+function ChatWindow({ chatSelected, isError }) {
+  // sentTime
+  let date = new Date();
+  const time = date.getHours() + ":" + date.getMinutes();
+
   return (
     <section className="chat_container">
       <header className="chat_container-title padding-10">
         <div className="chat_user-active">
-          <div className="chat_user-active-name">Morgan Freeman</div>
+          <div className="chat_user-active-name">
+          </div>
           <div className="chat_user-active-status"></div>
           <span>online</span>
         </div>

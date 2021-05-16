@@ -1,7 +1,7 @@
 import "./sass/_variables.scss";
 import "./App.scss";
 
-import { validateEmail } from './js/validateEmail';
+import { validateEmail } from "./js/validateEmail";
 import Login from "./components/Login/Login";
 import NotFound from "./components/NotFound/NotFound";
 import { Route, Redirect, Switch, useHistory } from "react-router-dom";
@@ -10,23 +10,24 @@ import React, { useState } from "react";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState("");
 
   let history = useHistory();
 
-  const userLogin = (email, pass) => {
-    if(validateEmail(email)){
+  const mainUserEmail = "demo@demo.com";
+
+  const userLogin = (email) => {
+    if (validateEmail(email) && mainUserEmail === email) {
       setIsLoggedIn(true);
-      setIsLoading(true);
       history.push("/");
     } else {
       setIsError("Wrong email or password");
     }
   };
 
-  const finishLoading = () => {
-    setIsLoading(false);
+  const setLoadingState = (bool) => {
+      setIsLoading(bool);
   };
 
   return (
@@ -35,13 +36,17 @@ function App() {
       <Switch>
         <Route exact path="/">
           {isLoggedIn ? (
-            <ChatApp isLoading={isLoading} finishLoading={finishLoading} />
+            <ChatApp isLoading={isLoading} setLoadingState={setLoadingState} />
           ) : (
             <Redirect to="/login/" />
           )}
         </Route>
         <Route path="/login/">
-          <Login userLogin={userLogin} isLoggedIn={isLoggedIn} isError={isError} />
+          <Login
+            userLogin={userLogin}
+            isLoggedIn={isLoggedIn}
+            isError={isError}
+          />
         </Route>
         <Route path="*" component={NotFound} />
       </Switch>

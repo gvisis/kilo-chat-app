@@ -64,6 +64,8 @@ aside.convo-list {
   background-color: #e3f6fc;
   height: inherit;
   @include margin-bottom;
+  overflow: auto;
+  
 
   .sidebar_chat-item {
     display: flex;
@@ -76,7 +78,7 @@ aside.convo-list {
     &:hover,
     &:active {
       border-radius: 15px;
-      background-color: $darker-blue;
+      background-color: lighten($darker-blue,10%);
       color: $white;
       box-shadow: 0px 0px 20px #60719681;
       cursor: pointer;

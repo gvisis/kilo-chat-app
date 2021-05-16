@@ -3,7 +3,7 @@ import "../../sass/login.scss";
 import { React, useState, useEffect } from "react";
 import { FaEnvelope, FaKey } from "react-icons/fa";
 
-function Login({ isLoggedIn, userLogin, isError }) {
+function Login({ userLogin, isError }) {
   const loginIcons = {
     color: "#29c0cd",
     width: "32px",

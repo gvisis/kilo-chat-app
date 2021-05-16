@@ -4,53 +4,70 @@ import ChatWindow from "./ChatWindow/ChatWindow";
 import Loading from "../Loading/Loading";
 import axios from "axios";
 
-// import Profile from "../Profile/Profile";
+function ChatApp({ isLoading, setLoadingState }) {
+  const [chatUsers, setChatUsers] = useState([]);
+  const [chatSelected, setChatSelected] = useState([]);
+  const [isErorr, setIsError] = useState(null);
 
-function ChatApp({ isLoading, finishLoading }) {
-  const [user, setUser] = useState({});
-  const randomUserUrl = "https://randomuser.me/api/";
+  const usersApiUrl = "https://api.jsonbin.io/b/60a1559f3656981d5122283b";
+
+  // Filters only the selected user
+  const selectChat = (userId) => {
+    const selectedUser = chatUsers.filter((users) => users.id === userId);
+    setChatSelected(selectedUser);
+    console.log(chatSelected[0].name.first);
+  };
 
   useEffect(() => {
-    axios
-      .get(randomUserUrl)
-      .then((res) => {
-        const {
-          location: { city },
-          email,
-          cell,
-          login: { uuid, username },
-          name: { first, last },
-          picture: { large },
-        } = res.data.results[0];
+    const source = axios.CancelToken.source();
 
-        setUser({
-          ...user,
-          firstName: first,
-          lastName: last,
-          email: email,
-          location: city,
-          phone: cell,
-          id: uuid,
-          userName: username,
-          picture: large,
+    // Fetch userdata
+    const getUsersData = (usersApiUrl) => {
+      axios
+        .get(usersApiUrl)
+        .then((res) => {
+          setChatUsers(res.data.users);
+        })
+        .then(() => {
+          setLoadingState(false);
+        })
+        .catch((err) => {
+          console.log(err);
+          setIsError(err.message);
         });
-        finishLoading();
-        
-      })
-      .catch((err) => console.log(err));
-  }, []);
+    };
+
+    getUsersData(usersApiUrl);
+    return () => {
+      source.cancel();
+    };
+  }, [selectChat]);
 
   if (isLoading) {
-    return <Loading isLoading={isLoading} finishLoading={finishLoading} />;
+    return <Loading isLoading={isLoading} setLoadingState={setLoadingState} />;
   }
 
+  console.log(chatUsers);
   return (
     <>
-      <Sidebar {...user}/>
-      <ChatWindow />
-      {/* <Profile /> */}
+      {/* {chatUsers.length !== 0 && (
+        <Sidebar
+          isLoading={isLoading}
+          isErorr={isErorr}
+          chatUsers={chatUsers}
+          selectChat={selectChat}
+        />
+      )}
+      {chatSelected && (
+        <ChatWindow isErorr={isErorr} chatSelected={chatSelected} />
+      )} */}
     </>
   );
 }
 
 export default ChatApp;
+
+// import Profile from "../Profile/Profile";
+{
+  /* <Profile /> */
+}
