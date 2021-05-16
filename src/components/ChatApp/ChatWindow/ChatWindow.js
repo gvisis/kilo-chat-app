@@ -5,12 +5,16 @@ function ChatWindow({ chatSelected, isError }) {
   // sentTime
   let date = new Date();
   const time = date.getHours() + ":" + date.getMinutes();
+  const {
+    name: { first, last },
+  } = chatSelected[0];
 
   return (
     <section className="chat_container">
       <header className="chat_container-title padding-10">
         <div className="chat_user-active">
           <div className="chat_user-active-name">
+            {chatSelected && `${first} ${last}`}
           </div>
           <div className="chat_user-active-status"></div>
           <span>online</span>

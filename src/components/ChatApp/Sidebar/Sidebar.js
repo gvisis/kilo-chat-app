@@ -1,7 +1,7 @@
 import React from "react";
 import { FaEdit, FaSignOutAlt } from "react-icons/fa";
 
-function Sidebar({ isLoading, chatUsers, selectChat }) {
+function Sidebar({ chatUsers, selectChat }) {
   // Getting and destructuring the info of the main user
   const mainUser = chatUsers.filter((user) => user.mainUser === true);
   const {
@@ -33,38 +33,36 @@ function Sidebar({ isLoading, chatUsers, selectChat }) {
         </div>
       )}
       <div className="sidebar_chat">
-
         {/* Showing all chat users (except the main user) in the sidebar */}
-        {!isLoading &&
-          chatUsers
-            .filter((chatUser) => chatUser.mainUser !== true)
-            .map((chatUser) => {
-              const {
-                name: { first, last },
-                city,
-                email,
-                phone,
-                id,
-                picture,
-                username,
-              } = chatUser;
+        {chatUsers
+          .filter((chatUser) => chatUser.mainUser !== true)
+          .map((chatUser) => {
+            const {
+              name: { first, last },
+              city,
+              email,
+              phone,
+              id,
+              picture,
+              username,
+            } = chatUser;
 
-              return (
-                <div
-                  key={id}
-                  className="sidebar_chat-item"
-                  onClick={() => selectChat(id)}
-                >
-                  <img src={picture} alt={first} className="profile-img" />
-                  <div className="chat_user-title">
-                    <span className="chat_user-name">
-                      {first} {last}
-                    </span>
-                    <p className="chat_user-message">Last text written</p>
-                  </div>
+            return (
+              <div
+                key={id}
+                className="sidebar_chat-item"
+                onClick={() => selectChat(id)}
+              >
+                <img src={picture} alt={first} className="profile-img" />
+                <div className="chat_user-title">
+                  <span className="chat_user-name">
+                    {first} {last}
+                  </span>
+                  <p className="chat_user-message">Last text written</p>
                 </div>
-              );
-            })}
+              </div>
+            );
+          })}
       </div>
       <div className="convo_list-logout">
         <FaSignOutAlt />
