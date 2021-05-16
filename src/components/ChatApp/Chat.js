@@ -34,6 +34,8 @@ function ChatApp({ isLoading, finishLoading }) {
           userName: username,
           picture: large,
         });
+        finishLoading();
+        
       })
       .catch((err) => console.log(err));
   }, []);
@@ -44,7 +46,7 @@ function ChatApp({ isLoading, finishLoading }) {
 
   return (
     <>
-      <Sidebar />
+      <Sidebar {...user}/>
       <ChatWindow />
       {/* <Profile /> */}
     </>

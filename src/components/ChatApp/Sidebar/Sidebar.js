@@ -1,7 +1,9 @@
 import React from "react";
 import { FaEdit, FaSignOutAlt } from "react-icons/fa";
 // https://randomuser.me/documentation#howto
-function Sidebar() {
+function Sidebar(props) {
+  const {firstName, lastName, picture, location} = props;
+
   const editIconStyle = {
     marginRight: "5px",
   };
@@ -9,12 +11,12 @@ function Sidebar() {
     <aside className="convo-list">
       <div className="user-profile">
         <img
-          src="https://randomuser.me/api/portraits/women/45.jpg"
+          src={picture}
           alt=""
           className="profile-img"
         />
-        <span className="profile-name">Margharet</span>
-        <span className="profile-status">Newfoundland</span>
+        <span className="profile-name">{firstName} {lastName}</span>
+        <span className="profile-status">{location}</span>
         <div className="profile-edit">
           <FaEdit style={editIconStyle} />
           <span>Edit</span>
