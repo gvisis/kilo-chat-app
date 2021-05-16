@@ -7,27 +7,28 @@
          },
          "city":"Vilnius",
          "email":"demo@demo.com",
-         "mainUser": true,
+         "mainUser":true,
          "id":"e7315309-6bdf-4365-966a-0ae037fc73d3",
          "username":"yellowcat",
          "phone":"07542-132-222",
          "picture":"https://randomuser.me/api/portraits/lego/6.jpg",
-         "allMessages":{
-            "d68c14af-d2a0-428f-a398-376ace41cb1e":[
-               {
-                  "createdAt":"2017-10-14T08:24:42.805Z",
-                  "text":"laba diena, sis tekstas yra mockinis ir mano"
-               },
-               {
-                  "createdAt":"2017-10-14T08:24:42.805Z",
-                  "text":"laba diena, sis tekstas yra mockinis ir mano2"
-               },
-               {
-                  "createdAt":"2017-10-14T08:24:42.805Z",
-                  "text":"laba diena, sis tekstas yra mockinis ir mano3"
-               }
-            ]
-         }
+         "allMessages":[
+            {
+               "createdAt":"2017-10-14T08:24:42.805Z",
+               "text":"laba diena, sis tekstas yra mockinis ir mano",
+               "from":"d68c14af-d2a0-428f-a398-376ace41cb1e"
+            },
+            {
+               "createdAt":"2017-10-14T08:24:42.805Z",
+               "text":"laba diena, sis tekstas yra mockinis ir mano2",
+               "from":"d68c14af-d2a0-428f-a398-376ace41cb1e"
+            },
+            {
+               "createdAt":"2017-10-14T08:24:42.805Z",
+               "text":"laba diena, sis tekstas yra mockinis ir mano3",
+               "from":"d68c14af-d2a0-428f-a398-376ace41cb1e"
+            }
+         ]
       },
       {
          "name":{
@@ -40,22 +41,23 @@
          "username":"orangeduck525",
          "phone":"0792-177-086",
          "picture":"https://randomuser.me/api/portraits/women/73.jpg",
-         "allMessages":{
-            "e7315309-6bdf-4365-966a-0ae037fc73d3":[
-               {
-                  "createdAt":"2017-10-14T08:24:42.805Z",
-                  "text":"laba diena, sis tekstas yra mockinis ir mano"
-               },
-               {
-                  "createdAt":"2017-10-14T08:24:42.805Z",
-                  "text":"laba diena, sis tekstas yra mockinis ir mano2"
-               },
-               {
-                  "createdAt":"2017-10-14T08:24:42.805Z",
-                  "text":"laba diena, sis tekstas yra mockinis ir mano3"
-               }
-            ]
-         }
+         "allMessages":[
+            {
+               "createdAt":"2017-10-14T08:24:42.805Z",
+               "text":"laba diena, sis tekstas yra mockinis ir mano",
+               "from":"e7315309-6bdf-4365-966a-0ae037fc73d3"
+            },
+            {
+               "createdAt":"2017-10-14T08:24:42.805Z",
+               "text":"laba diena, sis tekstas yra mockinis ir mano2",
+               "from":"e7315309-6bdf-4365-966a-0ae037fc73d3"
+            },
+            {
+               "createdAt":"2017-10-14T08:24:42.805Z",
+               "text":"laba diena, sis tekstas yra mockinis ir mano3",
+               "from":"e7315309-6bdf-4365-966a-0ae037fc73d3"
+            }
+         ]
       },
       {
          "name":{
@@ -68,22 +70,23 @@
          "username":"organicfrog912",
          "phone":"0709-738-939",
          "picture":"https://randomuser.me/api/portraits/men/14.jpg",
-         "allMessages":{
-            "e7315309-6bdf-4365-966a-0ae037fc73d3":[
-               {
-                  "createdAt":"2017-10-14T08:24:42.805Z",
-                  "text":"laba diena, sis tekstas yra mockinis ir mano"
-               },
-               {
-                  "createdAt":"2017-10-14T08:24:42.805Z",
-                  "text":"laba diena, sis tekstas yra mockinis ir mano2"
-               },
-               {
-                  "createdAt":"2017-10-14T08:24:42.805Z",
-                  "text":"laba diena, sis tekstas yra mockinis ir mano3"
-               }
-            ]
-         }
+         "allMessages":[
+            {
+               "createdAt":"2017-10-14T08:24:42.805Z",
+               "text":"laba diena, sis tekstas yra mockinis ir mano",
+               "from":"e7315309-6bdf-4365-966a-0ae037fc73d3"
+            },
+            {
+               "createdAt":"2017-10-14T08:24:42.805Z",
+               "text":"laba diena, sis tekstas yra mockinis ir mano2",
+               "from":"e7315309-6bdf-4365-966a-0ae037fc73d3"
+            },
+            {
+               "createdAt":"2017-10-14T08:24:42.805Z",
+               "text":"laba diena, sis tekstas yra mockinis ir mano3",
+               "from":"e7315309-6bdf-4365-966a-0ae037fc73d3"
+            }
+         ]
       },
       {
          "name":{
@@ -96,22 +99,23 @@
          "username":"silverleopard621",
          "phone":"075 978 12 72",
          "picture":"https://randomuser.me/api/portraits/men/72.jpg",
-         "allMessages":{
-            "e7315309-6bdf-4365-966a-0ae037fc73d3":[
-               {
-                  "createdAt":"2017-10-14T08:24:42.805Z",
-                  "text":"laba diena, sis tekstas yra mockinis ir mano"
-               },
-               {
-                  "createdAt":"2017-10-14T08:24:42.805Z",
-                  "text":"laba diena, sis tekstas yra mockinis ir mano2"
-               },
-               {
-                  "createdAt":"2017-10-14T08:24:42.805Z",
-                  "text":"laba diena, sis tekstas yra mockinis ir mano3"
-               }
-            ]
-         }
+         "allMessages":[
+            {
+               "createdAt":"2017-10-14T08:24:42.805Z",
+               "text":"laba diena, sis tekstas yra mockinis ir mano",
+               "from":"e7315309-6bdf-4365-966a-0ae037fc73d3"
+            },
+            {
+               "createdAt":"2017-10-14T08:24:42.805Z",
+               "text":"laba diena, sis tekstas yra mockinis ir mano2",
+               "from":"e7315309-6bdf-4365-966a-0ae037fc73d3"
+            },
+            {
+               "createdAt":"2017-10-14T08:24:42.805Z",
+               "text":"laba diena, sis tekstas yra mockinis ir mano3",
+               "from":"e7315309-6bdf-4365-966a-0ae037fc73d3"
+            }
+         ]
       },
       {
          "name":{
@@ -124,22 +128,23 @@
          "username":"heavysnake606",
          "phone":"081-672-5620",
          "picture":"https://randomuser.me/api/portraits/men/13.jpg",
-         "allMessages":{
-            "e7315309-6bdf-4365-966a-0ae037fc73d3":[
-               {
-                  "createdAt":"2017-10-14T08:24:42.805Z",
-                  "text":"laba diena, sis tekstas yra mockinis ir mano"
-               },
-               {
-                  "createdAt":"2017-10-14T08:24:42.805Z",
-                  "text":"laba diena, sis tekstas yra mockinis ir mano2"
-               },
-               {
-                  "createdAt":"2017-10-14T08:24:42.805Z",
-                  "text":"laba diena, sis tekstas yra mockinis ir mano3"
-               }
-            ]
-         }
+         "allMessages":[
+            {
+               "createdAt":"2017-10-14T08:24:42.805Z",
+               "text":"laba diena, sis tekstas yra mockinis ir mano",
+               "from":"e7315309-6bdf-4365-966a-0ae037fc73d3"
+            },
+            {
+               "createdAt":"2017-10-14T08:24:42.805Z",
+               "text":"laba diena, sis tekstas yra mockinis ir mano2",
+               "from":"e7315309-6bdf-4365-966a-0ae037fc73d3"
+            },
+            {
+               "createdAt":"2017-10-14T08:24:42.805Z",
+               "text":"laba diena, sis tekstas yra mockinis ir mano3",
+               "from":"e7315309-6bdf-4365-966a-0ae037fc73d3"
+            }
+         ]
       },
       {
          "name":{
@@ -152,22 +157,23 @@
          "username":"greenkoala882",
          "phone":"94410737",
          "picture":"https://randomuser.me/api/portraits/men/34.jpg",
-         "allMessages":{
-            "e7315309-6bdf-4365-966a-0ae037fc73d3":[
-               {
-                  "createdAt":"2017-10-14T08:24:42.805Z",
-                  "text":"laba diena, sis tekstas yra mockinis ir mano"
-               },
-               {
-                  "createdAt":"2017-10-14T08:24:42.805Z",
-                  "text":"laba diena, sis tekstas yra mockinis ir mano2"
-               },
-               {
-                  "createdAt":"2017-10-14T08:24:42.805Z",
-                  "text":"laba diena, sis tekstas yra mockinis ir mano3"
-               }
-            ]
-         }
+         "allMessages":[
+            {
+               "createdAt":"2017-10-14T08:24:42.805Z",
+               "text":"laba diena, sis tekstas yra mockinis ir mano",
+               "from":"e7315309-6bdf-4365-966a-0ae037fc73d3"
+            },
+            {
+               "createdAt":"2017-10-14T08:24:42.805Z",
+               "text":"laba diena, sis tekstas yra mockinis ir mano2",
+               "from":"e7315309-6bdf-4365-966a-0ae037fc73d3"
+            },
+            {
+               "createdAt":"2017-10-14T08:24:42.805Z",
+               "text":"laba diena, sis tekstas yra mockinis ir mano3",
+               "from":"e7315309-6bdf-4365-966a-0ae037fc73d3"
+            }
+         ]
       },
       {
          "name":{
@@ -180,22 +186,23 @@
          "username":"smallcat713",
          "phone":"0753-539-599",
          "picture":"https://randomuser.me/api/portraits/men/19.jpg",
-         "allMessages":{
-            "e7315309-6bdf-4365-966a-0ae037fc73d3":[
-               {
-                  "createdAt":"2017-10-14T08:24:42.805Z",
-                  "text":"laba diena, sis tekstas yra mockinis ir mano"
-               },
-               {
-                  "createdAt":"2017-10-14T08:24:42.805Z",
-                  "text":"laba diena, sis tekstas yra mockinis ir mano2"
-               },
-               {
-                  "createdAt":"2017-10-14T08:24:42.805Z",
-                  "text":"laba diena, sis tekstas yra mockinis ir mano3"
-               }
-            ]
-         }
+         "allMessages":[
+            {
+               "createdAt":"2017-10-14T08:24:42.805Z",
+               "text":"laba diena, sis tekstas yra mockinis ir mano",
+               "from":"e7315309-6bdf-4365-966a-0ae037fc73d3"
+            },
+            {
+               "createdAt":"2017-10-14T08:24:42.805Z",
+               "text":"laba diena, sis tekstas yra mockinis ir mano2",
+               "from":"e7315309-6bdf-4365-966a-0ae037fc73d3"
+            },
+            {
+               "createdAt":"2017-10-14T08:24:42.805Z",
+               "text":"laba diena, sis tekstas yra mockinis ir mano3",
+               "from":"e7315309-6bdf-4365-966a-0ae037fc73d3"
+            }
+         ]
       },
       {
          "name":{
@@ -208,22 +215,23 @@
          "username":"blackfish245",
          "phone":"(31) 8298-6645",
          "picture":"https://randomuser.me/api/portraits/men/90.jpg",
-         "allMessages":{
-            "e7315309-6bdf-4365-966a-0ae037fc73d3":[
-               {
-                  "createdAt":"2017-10-14T08:24:42.805Z",
-                  "text":"laba diena, sis tekstas yra mockinis ir mano"
-               },
-               {
-                  "createdAt":"2017-10-14T08:24:42.805Z",
-                  "text":"laba diena, sis tekstas yra mockinis ir mano2"
-               },
-               {
-                  "createdAt":"2017-10-14T08:24:42.805Z",
-                  "text":"laba diena, sis tekstas yra mockinis ir mano3"
-               }
-            ]
-         }
+         "allMessages":[
+            {
+               "createdAt":"2017-10-14T08:24:42.805Z",
+               "text":"laba diena, sis tekstas yra mockinis ir mano",
+               "from":"e7315309-6bdf-4365-966a-0ae037fc73d3"
+            },
+            {
+               "createdAt":"2017-10-14T08:24:42.805Z",
+               "text":"laba diena, sis tekstas yra mockinis ir mano2",
+               "from":"e7315309-6bdf-4365-966a-0ae037fc73d3"
+            },
+            {
+               "createdAt":"2017-10-14T08:24:42.805Z",
+               "text":"laba diena, sis tekstas yra mockinis ir mano3",
+               "from":"e7315309-6bdf-4365-966a-0ae037fc73d3"
+            }
+         ]
       },
       {
          "name":{
@@ -236,22 +244,23 @@
          "username":"organicfish561",
          "phone":"047-486-89-52",
          "picture":"https://randomuser.me/api/portraits/women/74.jpg",
-         "allMessages":{
-            "e7315309-6bdf-4365-966a-0ae037fc73d3":[
-               {
-                  "createdAt":"2017-10-14T08:24:42.805Z",
-                  "text":"laba diena, sis tekstas yra mockinis ir mano"
-               },
-               {
-                  "createdAt":"2017-10-14T08:24:42.805Z",
-                  "text":"laba diena, sis tekstas yra mockinis ir mano2"
-               },
-               {
-                  "createdAt":"2017-10-14T08:24:42.805Z",
-                  "text":"laba diena, sis tekstas yra mockinis ir mano3"
-               }
-            ]
-         }
+         "allMessages":[
+            {
+               "createdAt":"2017-10-14T08:24:42.805Z",
+               "text":"laba diena, sis tekstas yra mockinis ir mano",
+               "from":"e7315309-6bdf-4365-966a-0ae037fc73d3"
+            },
+            {
+               "createdAt":"2017-10-14T08:24:42.805Z",
+               "text":"laba diena, sis tekstas yra mockinis ir mano2",
+               "from":"e7315309-6bdf-4365-966a-0ae037fc73d3"
+            },
+            {
+               "createdAt":"2017-10-14T08:24:42.805Z",
+               "text":"laba diena, sis tekstas yra mockinis ir mano3",
+               "from":"e7315309-6bdf-4365-966a-0ae037fc73d3"
+            }
+         ]
       },
       {
          "name":{
@@ -264,22 +273,23 @@
          "username":"yellowleopard230",
          "phone":"70201845",
          "picture":"https://randomuser.me/api/portraits/women/66.jpg",
-         "allMessages":{
-            "e7315309-6bdf-4365-966a-0ae037fc73d3":[
-               {
-                  "createdAt":"2017-10-14T08:24:42.805Z",
-                  "text":"laba diena, sis tekstas yra mockinis ir mano"
-               },
-               {
-                  "createdAt":"2017-10-14T08:24:42.805Z",
-                  "text":"laba diena, sis tekstas yra mockinis ir mano2"
-               },
-               {
-                  "createdAt":"2017-10-14T08:24:42.805Z",
-                  "text":"laba diena, sis tekstas yra mockinis ir mano3"
-               }
-            ]
-         }
+         "allMessages":[
+            {
+               "createdAt":"2017-10-14T08:24:42.805Z",
+               "text":"laba diena, sis tekstas yra mockinis ir mano",
+               "from":"e7315309-6bdf-4365-966a-0ae037fc73d3"
+            },
+            {
+               "createdAt":"2017-10-14T08:24:42.805Z",
+               "text":"laba diena, sis tekstas yra mockinis ir mano2",
+               "from":"e7315309-6bdf-4365-966a-0ae037fc73d3"
+            },
+            {
+               "createdAt":"2017-10-14T08:24:42.805Z",
+               "text":"laba diena, sis tekstas yra mockinis ir mano3",
+               "from":"e7315309-6bdf-4365-966a-0ae037fc73d3"
+            }
+         ]
       },
       {
          "name":{
@@ -292,22 +302,23 @@
          "username":"brownrabbit214",
          "phone":"288-758-2736",
          "picture":"https://randomuser.me/api/portraits/women/88.jpg",
-         "allMessages":{
-            "e7315309-6bdf-4365-966a-0ae037fc73d3":[
-               {
-                  "createdAt":"2017-10-14T08:24:42.805Z",
-                  "text":"laba diena, sis tekstas yra mockinis ir mano"
-               },
-               {
-                  "createdAt":"2017-10-14T08:24:42.805Z",
-                  "text":"laba diena, sis tekstas yra mockinis ir mano2"
-               },
-               {
-                  "createdAt":"2017-10-14T08:24:42.805Z",
-                  "text":"laba diena, sis tekstas yra mockinis ir mano3"
-               }
-            ]
-         }
+         "allMessages":[
+            {
+               "createdAt":"2017-10-14T08:24:42.805Z",
+               "text":"laba diena, sis tekstas yra mockinis ir mano",
+               "from":"e7315309-6bdf-4365-966a-0ae037fc73d3"
+            },
+            {
+               "createdAt":"2017-10-14T08:24:42.805Z",
+               "text":"laba diena, sis tekstas yra mockinis ir mano2",
+               "from":"e7315309-6bdf-4365-966a-0ae037fc73d3"
+            },
+            {
+               "createdAt":"2017-10-14T08:24:42.805Z",
+               "text":"laba diena, sis tekstas yra mockinis ir mano3",
+               "from":"e7315309-6bdf-4365-966a-0ae037fc73d3"
+            }
+         ]
       }
    ]
 }

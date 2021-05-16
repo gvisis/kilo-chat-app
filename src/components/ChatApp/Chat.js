@@ -6,9 +6,10 @@ import Loading from "../Loading/Loading";
 function ChatApp({ isLoading, setLoadingState }) {
   const [chatUsers, setChatUsers] = useState([]);
   const [chatSelected, setChatSelected] = useState({});
+  const [mainUser, setMainUser] = useState({});
   const [isErorr, setIsError] = useState(null);
 
-  const usersApiUrl = "https://api.jsonbin.io/b/60a1559f3656981d5122283b/1";
+  const usersApiUrl = "https://api.jsonbin.io/b/60a1559f3656981d5122283b/2";
 
   // Filters only the selected user
   const selectChat = (userId) => {
@@ -18,13 +19,19 @@ function ChatApp({ isLoading, setLoadingState }) {
     }
   };
 
+  const filterAndSetUsers = (userObject) => {
+    setChatUsers(userObject);
+    const mainUser = {...userObject.filter((user) => user.mainUser === true)}
+    setMainUser(mainUser[0]);
+  }
+
   const getUsersData = async (apiUrl) => {
     setLoadingState(true);
     try {
       const response = await fetch(apiUrl);
       const data = await response.json();
       const { users } = data;
-      setChatUsers(users);
+      filterAndSetUsers(users);
       setLoadingState(false);
     } catch (error) {
       console.log(error.message);
@@ -36,7 +43,7 @@ function ChatApp({ isLoading, setLoadingState }) {
   }, []);
 
   if (isLoading) {
-    return <Loading isLoading={isLoading} setLoadingState={setLoadingState} />;
+    return <Loading />;
   }
 
   return (
@@ -46,6 +53,7 @@ function ChatApp({ isLoading, setLoadingState }) {
         isErorr={isErorr}
         chatUsers={chatUsers}
         selectChat={selectChat}
+        mainUser={mainUser}
       />
       <ChatWindow isErorr={isErorr} chatSelected={chatSelected} />
     </>

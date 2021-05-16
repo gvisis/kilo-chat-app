@@ -1,9 +1,8 @@
 import React from "react";
 import { FaEdit, FaSignOutAlt } from "react-icons/fa";
 
-function Sidebar({ chatUsers, selectChat }) {
+function Sidebar({ chatUsers, selectChat, mainUser }) {
   // Getting and destructuring the info of the main user
-  const mainUser = chatUsers.filter((user) => user.mainUser === true);
   const {
     name: { first, last },
     city,
@@ -11,7 +10,7 @@ function Sidebar({ chatUsers, selectChat }) {
     phone,
     picture,
     username,
-  } = mainUser[0];
+  } = mainUser;
 
   const editIconStyle = {
     marginRight: "5px",
