@@ -5,38 +5,18 @@ import Loading from "../Loading/Loading";
 
 function ChatApp({ isLoading, setLoadingState }) {
   const [chatUsers, setChatUsers] = useState([]);
-  const [chatSelected, setChatSelected] = useState([]);
+  const [chatSelected, setChatSelected] = useState({});
   const [isErorr, setIsError] = useState(null);
 
   const usersApiUrl = "https://api.jsonbin.io/b/60a1559f3656981d5122283b/1";
 
   // Filters only the selected user
   const selectChat = (userId) => {
-    // console.log('users', chatUsers);
-    const selectedUser = chatUsers.filter((users) => users.id === userId);
-    setChatSelected(selectedUser);
-    console.log(chatSelected);
+    if (userId !== null || userId !== undefined) {
+      const selectedUser = chatUsers.filter((users) => users.id === userId);
+      setChatSelected(selectedUser[0]);
+    }
   };
-
-  //   useEffect(() => {
-  //     getUsersData(user)
-  //  }, [chatSelected]);
-
-  // Fetch userdata
-  // const getUsersData = (usersApiUrl) => {
-  //   axios
-  //     .get(usersApiUrl)
-  //     .then((res) => {
-  //       setChatUsers(res.data.users);
-  //     })
-  //     .then(() => {
-  //       setLoadingState(false);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //       setIsError(err.message);
-  //     });
-  // };
 
   const getUsersData = async (apiUrl) => {
     setLoadingState(true);

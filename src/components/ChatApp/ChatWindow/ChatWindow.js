@@ -1,20 +1,48 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { FaPaperPlane } from "react-icons/fa";
 
-function ChatWindow({ chatSelected, isError }) {
+function ChatWindow({ isError, chatSelected }) {
+  const [isUserSelected, setIsUserSelected] = useState(false);
+
   // sentTime
   let date = new Date();
   const time = date.getHours() + ":" + date.getMinutes();
+
+  const isObjectEmpty = (object) => {
+    if (Object.entries(object).length === 0) {
+      return true;
+    }
+    return false;
+  };
+
+  useEffect(() => {
+    if (!isObjectEmpty(chatSelected)) {
+      setIsUserSelected(true);
+    } else {
+      setIsUserSelected(false);
+    }
+  }, [chatSelected]);
+
+  if (!isUserSelected) {
+    return (
+      <section className="chat_container">
+        <div>No user selected</div>
+      </section>
+    );
+  }
+
   const {
     name: { first, last },
-  } = chatSelected[0];
+    allMessages,
+    picture,
+  } = chatSelected;
 
   return (
     <section className="chat_container">
       <header className="chat_container-title padding-10">
         <div className="chat_user-active">
           <div className="chat_user-active-name">
-            {chatSelected && `${first} ${last}`}
+            {first} {last}
           </div>
           <div className="chat_user-active-status"></div>
           <span>online</span>
