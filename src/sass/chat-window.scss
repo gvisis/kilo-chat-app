@@ -126,12 +126,14 @@
   .chat_container-send {
     border-radius: 10px 0 0 0;
     border-top: 1px solid $light-blue;
+    display: flex;
+    flex-direction: row;
 
     .chat_container-input {
+      width: 100%;
       padding: 0 5px;
       display: flex;
       align-items: center;
-      justify-content: space-between;
       font-size: 1.4rem;
       input {
         border: none;
@@ -143,14 +145,32 @@
         padding: 5px;
         @include fontMontserrat;
       }
-      svg {
-        padding: 5px 10px;
-        color: $darker-blue;
-        &:hover,
-        &:active {
-          cursor: pointer;
-          color: darken($darker-blue, 10%);
+    }
+    .send-button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      justify-self: flex-end;
+      width: 100px;
+      border: none;
+      background-color: darken($white,5%);
+      border-radius: 15px;
+      &:hover, &:active {
+        background-color: $platinum;
+        box-shadow: 0 0 5px rgba(darken($darker-blue, 10%),.05);
+        cursor: pointer;
+        color: darken($darker-blue, 20%);
+        &:hover svg {
+          font-size: 18px;
+          color: darken($darker-blue,10%);
         }
+      }
+      svg {
+        width: 100%;
+        padding: 5px;
+        color: $darker-blue;
+        transition: font-size 0.5s ease;
       }
     }
   }

@@ -9,7 +9,7 @@ function ChatApp({ isLoading, setLoadingState }) {
   const [mainUser, setMainUser] = useState({});
   const [isErorr, setIsError] = useState(null);
 
-  const usersApiUrl = "https://api.jsonbin.io/b/60a1559f3656981d5122283b/2";
+  const usersApiUrl = "https://api.jsonbin.io/b/60a1559f3656981d5122283b/latest";
 
   // Filters only the selected user
   const selectChat = (userId) => {
@@ -37,7 +37,8 @@ function ChatApp({ isLoading, setLoadingState }) {
       console.log(error.message);
     }
   };
-
+  
+  
   useEffect(() => {
     getUsersData(usersApiUrl);
   }, []);
@@ -45,7 +46,6 @@ function ChatApp({ isLoading, setLoadingState }) {
   if (isLoading) {
     return <Loading />;
   }
-
   return (
     <>
       <Sidebar
@@ -55,7 +55,7 @@ function ChatApp({ isLoading, setLoadingState }) {
         selectChat={selectChat}
         mainUser={mainUser}
       />
-      <ChatWindow isErorr={isErorr} chatSelected={chatSelected} />
+      <ChatWindow isErorr={isErorr} chatSelected={chatSelected} mainUser={mainUser} chatUsers={chatUsers} />
     </>
   );
 }

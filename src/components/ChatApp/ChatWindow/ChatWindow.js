@@ -1,12 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Messages from "../Messages/Messages";
 
-function ChatWindow({ isError, chatSelected }) {
+function ChatWindow({ isError, chatSelected, mainUser, chatUsers}) {
   const [isUserSelected, setIsUserSelected] = useState(false);
-
-  // sentTime
-  let date = new Date();
-  const time = date.getHours() + ":" + date.getMinutes();
 
   const isObjectEmpty = (object) => {
     if (Object.entries(object).length === 0) {
@@ -30,7 +26,7 @@ function ChatWindow({ isError, chatSelected }) {
       </section>
     );
   }
-  return <Messages {...chatSelected} />;
+  return <Messages chatSelected={chatSelected} mainUser={mainUser} chatUsers={chatUsers} />;
 }
 
 export default ChatWindow;
