@@ -70,7 +70,7 @@ const secondName = {
   ],
 };
 
-const users = {
+/* const users = {
   users: []
 }
 users.users.push(newName);
@@ -101,10 +101,9 @@ const activities = [
   { title: 'Trekking', date: new Date('2019-06-22') }
 ]
 // slice protects original array
-
 const sortedMessages = userOneMessages.slice().sort((a, b) => b.createdAt - a.createdAt)
 
-console.log(sortedMessages);
+console.log(sortedMessages); */
 // ============
   return (
     <main className="login-main">

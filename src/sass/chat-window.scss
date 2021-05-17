@@ -39,8 +39,16 @@
     }
   }
   .chat_container-messages {
+    overflow: auto;
     height: 100%;
-
+    .no-messages {
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-transform: uppercase;
+      text-shadow: 0 0 1px $light-periwinkle;
+    }
     .message {
       display: flex;
       flex-direction: row;

@@ -1,0 +1,23 @@
+import React, { useState, useEffect } from "react";
+import { FaPaperPlane } from "react-icons/fa";
+
+const SendingMessage = ({handleSendForm, setInputValue, textValue}) => {
+  return (
+    <form className="chat_container-input" onSubmit={handleSendForm}>
+      <input
+        value={textValue}
+        type="text"
+        onChange={(e) => setInputValue(e.target.value)}
+      />
+      <button
+        type="submit"
+        disabled={!textValue.length}
+        className="send-button"
+      >
+        <FaPaperPlane />
+      </button>
+    </form>
+  );
+};
+
+export default SendingMessage;

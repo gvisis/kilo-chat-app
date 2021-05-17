@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Sidebar from "./Sidebar/Sidebar";
 import ChatWindow from "./ChatWindow/ChatWindow";
 import Loading from "../Loading/Loading";
+import axios from "axios";
 
 function ChatApp({ isLoading, setLoadingState }) {
   const [chatUsers, setChatUsers] = useState([]);
@@ -9,9 +10,10 @@ function ChatApp({ isLoading, setLoadingState }) {
   const [mainUser, setMainUser] = useState({});
   const [isErorr, setIsError] = useState(null);
 
-  const usersApiUrl = "https://api.jsonbin.io/b/60a1559f3656981d5122283b/latest";
+  const usersApiUrl =
+    "https://api.jsonbin.io/b/60a2c2f3d5b0ee05c1ef7861/latest";
 
-  // Filters only the selected user
+  // Sets state for the selected user by id
   const selectChat = (userId) => {
     if (userId !== null || userId !== undefined) {
       const selectedUser = chatUsers.filter((users) => users.id === userId);
@@ -19,26 +21,35 @@ function ChatApp({ isLoading, setLoadingState }) {
     }
   };
 
+  // Filters the main user
   const filterAndSetUsers = (userObject) => {
     setChatUsers(userObject);
-    const mainUser = {...userObject.filter((user) => user.mainUser === true)}
+    const mainUser = { ...userObject.filter((user) => user.mainUser === true) };
     setMainUser(mainUser[0]);
-  }
+  };
+
+  // API Settings
+  const apiKey = "$2b$10$zsQeFc4HAPaWVNwcqq1M3eCNVtIzBNNQ4tybT4HRbzs8iP9dJoLpO";
+  const headers = {
+    "Content-Type": "application/json",
+    "secret-key": apiKey,
+    versioning: "false",
+  };
 
   const getUsersData = async (apiUrl) => {
-    setLoadingState(true);
-    try {
-      const response = await fetch(apiUrl);
-      const data = await response.json();
-      const { users } = data;
-      filterAndSetUsers(users);
-      setLoadingState(false);
-    } catch (error) {
-      console.log(error.message);
-    }
+    await axios
+      .get(apiUrl, {
+        headers: headers,
+      })
+      .then((response) => {
+        filterAndSetUsers(response.data.users);
+        setLoadingState(false);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
-  
-  
+
   useEffect(() => {
     getUsersData(usersApiUrl);
   }, []);
@@ -46,6 +57,18 @@ function ChatApp({ isLoading, setLoadingState }) {
   if (isLoading) {
     return <Loading />;
   }
+
+  /* playground */
+  // const sentTexts = mainUser.allMessages.filter(({ to }) => to === id);
+
+  // const conversation = chatUsers.map(user =>)
+  // const sentTexts = mainUser.allMessages.filter(({ to }) => to === id);
+  // const receivedTexts = chatSelected.allMessages.filter(
+  //   ({ to }) => to === mainUser.id
+  // );
+
+  const zinutes = chatUsers.map((user) => Object.values(user.allMessages));
+  /* laygroundend */
   return (
     <>
       <Sidebar
@@ -55,14 +78,13 @@ function ChatApp({ isLoading, setLoadingState }) {
         selectChat={selectChat}
         mainUser={mainUser}
       />
-      <ChatWindow isErorr={isErorr} chatSelected={chatSelected} mainUser={mainUser} chatUsers={chatUsers} />
+      <ChatWindow
+        isErorr={isErorr}
+        chatSelected={chatSelected}
+        mainUser={mainUser}
+        chatUsers={chatUsers}
+      />
     </>
   );
 }
-
 export default ChatApp;
-
-// import Profile from "../Profile/Profile";
-{
-  /* <Profile /> */
-}

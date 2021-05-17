@@ -1,97 +1,32 @@
 {
-   "users":[
-      {
-         "name":{
-            "first":"Demo",
-            "last":"Account"
-         },
-         "city":"Vilnius",
-         "email":"demo@demo.com",
-         "mainUser":true,
-         "id":"e7315309-6bdf-4365-966a-0ae037fc73d3",
-         "username":"yellowcat",
-         "phone":"07542-132-222",
-         "picture":"https://randomuser.me/api/portraits/lego/6.jpg",
-         "allMessages":[
-            {
-               "createdAt":"2017-10-14T08:24:42.805Z",
-               "sentText":"sitas textas yra mano ir as parasiau Sofia",
-               "to":"d68c14af-d2a0-428f-a398-376ace41cb1e"
-            },
-            {
-               "createdAt":"2017-10-14T08:24:42.805Z",
-               "sentText":"zinutes is kito accounto is Sofia2",
-               "to":"d68c14af-d2a0-428f-a398-376ace41cb1e"
-            },
-            {
-               "createdAt":"2017-10-14T08:24:42.805Z",
-               "sentText":"zinutes is kito accounto is Sofia3",
-               "to":"d68c14af-d2a0-428f-a398-376ace41cb1e"
-            },
-            {
-               "createdAt":"2017-10-14T08:24:42.805Z",
-               "sentText":"tekstas mano parasytas Jorgei",
-               "to":"82c3c811-d1da-4af5-a6cb-71b9cf125520"
-            }
-         ]
-      },
-      {
-         "name":{
-            "first":"Sofia",
-            "last":"Hicks"
-         },
-         "city":"Preston",
-         "email":"sofia.hicks@example.com",
-         "id":"d68c14af-d2a0-428f-a398-376ace41cb1e",
-         "username":"orangeduck525",
-         "phone":"0792-177-086",
-         "picture":"https://randomuser.me/api/portraits/women/73.jpg",
-         "allMessages":[
-            {
-               "createdAt":"2017-10-14T08:24:42.805Z",
-               "sentText":"Sitas tekstas yra is Sofijos",
-               "to":"e7315309-6bdf-4365-966a-0ae037fc73d3"
-            },
-            {
-               "createdAt":"2017-10-14T08:24:42.805Z",
-               "sentText":"Sitas tekstas yra is Sofijos2",
-               "to":"e7315309-6bdf-4365-966a-0ae037fc73d3"
-            },
-            {
-               "createdAt":"2017-10-14T08:24:42.805Z",
-               "sentText":"Sitas tekstas yra is Sofijos3",
-               "to":"e7315309-6bdf-4365-966a-0ae037fc73d3"
-            }
-         ]
-      },
-      {
-         "name":{
-            "first":"Jorge",
-            "last":"Warren"
-         },
-         "city":"Peterborough",
-         "email":"jorge.warren@example.com",
-         "id":"82c3c811-d1da-4af5-a6cb-71b9cf125520",
-         "username":"organicfrog912",
-         "phone":"0709-738-939",
-         "picture":"https://randomuser.me/api/portraits/men/14.jpg",
-         "allMessages":[
-            {
-               "createdAt":"2017-10-14T08:24:42.805Z",
-               "sentText":"Parase mum Jorginas",
-               "to":"e7315309-6bdf-4365-966a-0ae037fc73d3"
-            },
-            {
-               "createdAt":"2017-10-14T08:24:42.805Z",
-               "sentText":"Parase mum Jorginas2",
-               "to":"e7315309-6bdf-4365-966a-0ae037fc73d3"
-            },
-            {
-               "createdAt":"2017-10-14T08:24:42.805Z",
-               "sentText":"Parase mum Jorginas3",
-               "to":"e7315309-6bdf-4365-966a-0ae037fc73d3"
-            }
-         ]
-      }
+   "users": [
+     {
+       "name": {
+         "firstName": "Demo",
+         "lastName": "Account"
+       },
+       "city": "Vilnius",
+       "email": "demo@demo.com",
+       "mainUser": true,
+       "id": "e7315309-6bdf-4365-966a-0ae037fc73d3",
+       "username": "yellowcat",
+       "phone": "07542-132-222",
+       "picture": "https://randomuser.me/api/portraits/lego/6.jpg",
+       "allMessages": []
+     },
+     {
+       "name": {
+         "firstName": "Sofia",
+         "lastName": "Hicks"
+       },
+       "city": "Preston",
+       "email": "sofia.hicks@example.com",
+       "id": "d68c14af-d2a0-428f-a398-376ace41cb1e",
+       "mainUser": false,
+       "username": "orangeduck525",
+       "phone": "0792-177-086",
+       "picture": "https://randomuser.me/api/portraits/women/73.jpg",
+       "allMessages": []
+     }
    ]
-}
+ }

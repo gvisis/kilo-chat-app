@@ -4,7 +4,7 @@ import { FaEdit, FaSignOutAlt } from "react-icons/fa";
 function Sidebar({ chatUsers, selectChat, mainUser }) {
   // Getting and destructuring the info of the main user
   const {
-    name: { first, last },
+    name: { firstName, lastName },
     city,
     email,
     phone,
@@ -20,9 +20,9 @@ function Sidebar({ chatUsers, selectChat, mainUser }) {
     <aside className="convo-list">
       {mainUser && (
         <div className="user-profile">
-          <img src={picture} alt={first} className="profile-img" />
+          <img src={picture} alt={firstName} className="profile-img" />
           <span className="profile-name">
-            {first} {last}
+            {firstName} {lastName}
           </span>
           <span className="profile-status">{city}</span>
           <div className="profile-edit">
@@ -37,7 +37,7 @@ function Sidebar({ chatUsers, selectChat, mainUser }) {
           .filter((chatUser) => chatUser.mainUser !== true)
           .map((chatUser) => {
             const {
-              name: { first, last },
+              name: { firstName, lastName },
               city,
               email,
               phone,
@@ -52,12 +52,12 @@ function Sidebar({ chatUsers, selectChat, mainUser }) {
                 className="sidebar_chat-item"
                 onClick={() => selectChat(id)}
               >
-                <img src={picture} alt={first} className="profile-img" />
+                <img src={picture} alt={firstName} className="profile-img" />
                 <div className="chat_user-title">
                   <span className="chat_user-name">
-                    {first} {last}
+                    {firstName} {lastName}
                   </span>
-                  <p className="chat_user-message">Last text written</p>
+                  <p className="chat_user-message">lastName text written</p>
                 </div>
               </div>
             );
