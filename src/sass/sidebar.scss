@@ -3,7 +3,7 @@ aside.convo-list {
   grid-column: auto / span 3;
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 100%;
 }
 @mixin margin-bottom {
   margin-bottom: 10px;
@@ -64,7 +64,7 @@ aside.convo-list {
   background-color: #e3f6fc;
   height: inherit;
   @include margin-bottom;
-  overflow: auto;
+  overflow-y: auto;
 
   .sidebar_chat-item {
     display: flex;
@@ -112,5 +112,36 @@ aside.convo-list {
   padding: 10px;
   &:hover {
     cursor: pointer;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .user-profile {
+    flex-direction: row;
+    padding: 5px;
+
+    img {
+      width: 32px;
+      height: 32px;
+      border: 2px solid $light-pink;
+      margin: 5px 10px;
+    }
+    .profile-name {
+      font-weight: 600;
+      font-size: 0.7rem;
+      margin: 0;
+
+    }
+    .profile-status {
+      padding: 0 10px;
+      font-size: 0.6rem;
+      margin-bottom: 0;
+    }
+  }
+  .convo_list-logout {
+    display: none;
+  }
+  .sidebar_chat {
+    margin: 0 5px 5px 5px;
   }
 }

@@ -1,20 +1,37 @@
 import React, { useState, useRef } from "react";
+import axios from 'axios';
 import { v4 as uuidv4 } from "uuid";
 import moment from "moment";
 
-import SendingMessage from "./SendingMessage";
+import InputContainer from "./InputContainer";
 import SingleMessage from "./SingleMessage";
 
 const Messages = ({ mainUser, chatSelected }) => {
   const scrollTo = useRef();
   const [textValue, setTextValue] = useState("");
+  const [isError, setIsError] = useState(true);
 
   const setInputValue = (value) => {
     setTextValue(value);
   };
 
+  const updateApiData = async (apiUrl, messageToAdd, headers) => {
+
+    // await axios
+    //   .put(apiUrl, messages, {
+    //     headers: headers,
+    //   })
+    //   .then((response) => {
+    //     console.log(response.status);
+    //   })
+    //   .catch((error) => {
+    //     console.log(error.message);
+    //   });
+  };
+
   const handleSendForm = (e) => {
     e.preventDefault();
+
     // Checking if value is valid
     if (textValue !== null || textValue.length > 0) {
       sendMessage(textValue, chatSelected.id);
@@ -33,8 +50,12 @@ const Messages = ({ mainUser, chatSelected }) => {
         sentText: messageToBeSent,
         to: userId,
       };
-      mainUser.allMessages.push(message);
-      setTextValue("");
+      
+      if (updateApiData(message)) {
+        setTextValue("");
+      } else {
+        setIsError("There was a problem sending your message")
+      }
       // receiveMessage(messageToBeSent, mainUser.id);
       scrollTo.current.scrollIntoView({ behavior: "smooth" });
     } else {
@@ -57,7 +78,7 @@ const Messages = ({ mainUser, chatSelected }) => {
   const receivedTexts = chatSelected.allMessages.filter(
     ({ to }) => to === mainUser.id
   );
-
+    
   //Concat the converastion and sort it by time
   const concatedConversation = sentTexts.concat(receivedTexts);
   const conversation = concatedConversation
@@ -69,7 +90,7 @@ const Messages = ({ mainUser, chatSelected }) => {
       <header className="chat_container-title padding-10">
         <div className="chat_user-active">
           <div className="chat_user-active-name">
-            {chatSelected.firstName} {chatSelected.lastName}
+            {chatSelected.name.firstName} {chatSelected.name.lastName}
           </div>
           <div className="chat_user-active-status"></div>
           <span>online</span>
@@ -80,11 +101,12 @@ const Messages = ({ mainUser, chatSelected }) => {
         <SingleMessage conversation={conversation} mainUser={mainUser} chatSelected={chatSelected} />
       </main>
       <footer className="chat_container-send padding-10">
-        <SendingMessage
+        <InputContainer
           textValue={textValue}
           handleSendForm={handleSendForm}
           setInputValue={setInputValue}
           conversation={conversation}
+          isError={isError}
         />
       </footer>
     </section>

@@ -2,12 +2,13 @@ import moment from "moment";
 import React from "react";
 
 const SingleMessage = ({ conversation, mainUser, chatSelected }) => {
+
   const {
     name: { firstName },
     picture,
     id,
   } = chatSelected;
-  
+
   return (
     <>
       {conversation.length !== 0 ? (

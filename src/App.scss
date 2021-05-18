@@ -7,7 +7,6 @@ body {
     rgba(38, 191, 204, 1) 33%,
     rgba(39, 172, 184, 1) 100%
     );
-    scroll-behavior: smooth;
 }
 
   .container {
@@ -51,7 +50,9 @@ body {
 
 @media only screen and (max-width: 768px) {
   .container {
-    grid-template-columns: 15px 1fr 15px;
+    grid-template-columns: 10px 1fr 10px;
+    height: auto;
+    padding: 0 5px;
 
     * {
       grid-column: 1 / -1;
