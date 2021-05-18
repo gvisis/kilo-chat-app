@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Profile({ handleEdit, mainUser }) {
   const [mainUserValues, setMainUserValues] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [successfulEdit, setSuccessfulEdit] = useState(false);
 
   const getKeys = (key) => {
     const allowedKeys = [
@@ -22,13 +25,30 @@ function Profile({ handleEdit, mainUser }) {
 
   //   Changes values in the input field
   const handleChange = (e, index, key) => {
-    console.log(mainUserValues);
     mainUserValues[index][key] = e.target.value;
     setMainUserValues([...mainUserValues]);
   };
 
-  //   Filters only required entries by the key
+  useEffect(() => {
+    const timeOut = 3000;
+    if (successfulEdit) {
+      toast.success("Info Edited! (Not realy)", {
+        position: "top-right",
+        autoClose: timeOut,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: false,
+      });
 
+      setTimeout(() => {
+        setSuccessfulEdit(false);
+        handleEdit();
+      }, timeOut);
+    }
+  }, [successfulEdit]);
+
+  //   Filters only required entries by the key
   useEffect(() => {
     const filteredValuesByKey = Object.entries(mainUser)
       .filter(([key]) => getKeys(key))
@@ -80,10 +100,20 @@ function Profile({ handleEdit, mainUser }) {
             </form>
           </main>
           <footer className="profile_buttons">
-            <div className="btn edit-btn">edit</div>
+            <div
+              className="btn edit-btn"
+              onClick={() => setSuccessfulEdit(true)}
+            >
+              edit
+            </div>
             <div className="btn close-btn" onClick={handleEdit}>
               close
             </div>
+            {successfulEdit && (
+              <div>
+                <ToastContainer />
+              </div>
+            )}
           </footer>
         </div>
       </div>

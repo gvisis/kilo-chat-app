@@ -42,6 +42,7 @@ function ChatApp({ isLoading, setLoadingState }) {
     setEditProfile(!editProfile);
   };
 
+  // Fetching the first data from API
   const getUsersData = async (url) => {
     await axios
       .get(url, {

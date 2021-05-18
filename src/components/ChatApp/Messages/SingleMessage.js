@@ -1,6 +1,7 @@
 import moment from "moment";
 import React from "react";
 
+// Single message view depending on who wrote it
 const SingleMessage = ({ conversation, mainUser, chatSelected }) => {
 
   const {

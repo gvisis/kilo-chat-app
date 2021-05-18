@@ -39,6 +39,8 @@ const Messages = ({ mainUser, chatSelected, chatUsers }) => {
       setFakeMessage(fakeMessage);
     }, [chatSelected])
 
+
+  // Message updates to API 
   const updateApiData = async (messageToAdd) => {
     if (messageToAdd.sentText.length > 0) {
       const fakeMessage = {
@@ -64,10 +66,10 @@ const Messages = ({ mainUser, chatSelected, chatUsers }) => {
     }
   };
 
+  // Checking if value ir not empty and sending it through functions
   const handleSendForm = (e) => {
     e.preventDefault();
 
-    // Checking if value is not null
     if (textValue !== null || textValue.length > 0) {
       sendMessage(textValue, chatSelected.id);
     } else {
