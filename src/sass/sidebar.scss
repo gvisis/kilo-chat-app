@@ -105,11 +105,16 @@ aside.convo-list {
   }
 }
 .convo_list-logout {
-  text-align: left;
+  display: flex;
+  justify-content: center;
   align-items: center;
   background-color: $light-blue;
   border-radius: 15px 15px 0 0;
   padding: 10px;
+  a {
+    padding: 0 10px;
+    text-decoration: none;
+  }
   &:hover {
     cursor: pointer;
   }
@@ -130,7 +135,6 @@ aside.convo-list {
       font-weight: 600;
       font-size: 0.7rem;
       margin: 0;
-
     }
     .profile-status {
       padding: 0 10px;

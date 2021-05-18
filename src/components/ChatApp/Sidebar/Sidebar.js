@@ -2,7 +2,7 @@ import React from "react";
 import { FaEdit, FaSignOutAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-function Sidebar({ chatUsers, selectChat, mainUser }) {
+function Sidebar({ chatUsers, selectChat, mainUser, handleEdit}) {
   // Getting and destructuring the info of the main user
   const {
     name: { firstName, lastName },
@@ -26,7 +26,7 @@ function Sidebar({ chatUsers, selectChat, mainUser }) {
             {firstName} {lastName}
           </span>
           <span className="profile-status">{city}</span>
-          <div className="profile-edit">
+          <div className="profile-edit" onClick={handleEdit}>
             <FaEdit style={editIconStyle} />
             <span>Edit</span>
           </div>

@@ -11,7 +11,7 @@ import React, { useState } from "react";
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const [isError, setIsError] = useState("");
+  const [isError, setIsError] = useState(null);
 
   let history = useHistory();
 
@@ -26,6 +26,7 @@ function App() {
       mainUserPassword === password
     ) {
       setIsLoggedIn(true);
+      setIsError(null)
       history.push("/");
     } else {
       setIsError("Wrong email or password");

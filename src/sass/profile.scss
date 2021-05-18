@@ -1,4 +1,82 @@
-.profile-container {
-    background-color: lightsalmon;
-    grid-column: auto / span 3;
+.chat_container {
+  .chat_container-messages {
+    .profile-container {
+      height: inherit;
+      display: flex;
+      flex-direction: column;
+      header {
+          text-align: center;
+          text-transform: uppercase;
+      }
+      form {
+        padding: 1rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin-bottom: 20px;
+        .profile_input-row:first-child {
+          border-radius: 10px 10px 0 0;
+        }
+        .profile_input-row:last-child {
+          border-radius: 0 0 10px 10px;
+        }
+        .profile_input-row {
+          flex-wrap: wrap;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 80%;
+          background-color: lighten($light-pink, 5%);
+          color: $white;
+
+          .profile_input-title {
+            padding: 10px;
+            text-transform: capitalize;
+          }
+          .profile_input {
+            width: 40%;
+            padding: 5px;
+            font-size: 0.9rem;
+            height: 1.5rem;
+            min-width: 150px;
+            margin: 15px 0;
+            width: 40%;
+            border: none;
+            &:focus {
+              outline-color: $light-blue;
+            }
+          }
+        }
+      }
+      .profile_buttons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .btn {
+          cursor: pointer;
+          line-height: 20px;
+          text-align: center;
+          text-transform: capitalize;
+          color: $white;
+          width: 120px;
+          padding: 10px 15px;
+          margin: 10px;
+          border-radius: 5px;
+          border: none;
+          background-color: lightseagreen;
+          transition: background-color 0.5s ease-out;
+          &:hover {
+            background-color: darken(lightseagreen,10%)
+          }
+          &.close-btn {
+              background-color: $light-pink;
+              &:hover {
+                background-color: darken($light-pink, 15%);
+            }
+          }
+        }
+      }
+    }
+  }
 }
