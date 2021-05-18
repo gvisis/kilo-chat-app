@@ -1,5 +1,6 @@
 import React from "react";
 import { FaEdit, FaSignOutAlt } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 function Sidebar({ chatUsers, selectChat, mainUser }) {
   // Getting and destructuring the info of the main user
@@ -42,6 +43,7 @@ function Sidebar({ chatUsers, selectChat, mainUser }) {
               email,
               phone,
               id,
+              allMessages,
               picture,
               username,
             } = chatUser;
@@ -57,7 +59,6 @@ function Sidebar({ chatUsers, selectChat, mainUser }) {
                   <span className="chat_user-name">
                     {firstName} {lastName}
                   </span>
-                  <p className="chat_user-message">lastName text written</p>
                 </div>
               </div>
             );
@@ -65,7 +66,9 @@ function Sidebar({ chatUsers, selectChat, mainUser }) {
       </div>
       <div className="convo_list-logout">
         <FaSignOutAlt />
-        <span>Logout</span>
+        <Link to="/login">
+          <span>Logout</span>
+        </Link>
       </div>
     </aside>
   );

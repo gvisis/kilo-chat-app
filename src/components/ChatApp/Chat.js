@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Sidebar from "./Sidebar/Sidebar";
 import ChatWindow from "./ChatWindow/ChatWindow";
 import Loading from "../Loading/Loading";
+import Error from "../Error/Error";
 import axios from "axios";
 
 function ChatApp({ isLoading, setLoadingState }) {
@@ -10,16 +11,23 @@ function ChatApp({ isLoading, setLoadingState }) {
   const [mainUser, setMainUser] = useState({});
   const [isErorr, setIsError] = useState(null);
 
+
   const usersApiUrl =
     "https://api.jsonbin.io/b/60a2c2f3d5b0ee05c1ef7861/latest";
 
   // Sets state for the selected user by id
   const selectChat = (userId) => {
-    if (userId !== null || userId !== undefined) {
-      const selectedUser = chatUsers.filter((users) => users.id === userId);
-      setChatSelected(selectedUser[0]);
+    try {
+      if (userId !== null || userId !== undefined) {
+        const selectedUser = chatUsers.filter((users) => users.id === userId);
+        setChatSelected(selectedUser[0]);
+      }
+    } catch (error) {
+        console.error(error)
+        setIsError(true)
+        return <Error />
+      }
     }
-  };
 
   // Filters the main user
   const filterAndSetUsers = (userObject) => {
@@ -58,17 +66,6 @@ function ChatApp({ isLoading, setLoadingState }) {
     return <Loading />;
   }
 
-  /* playground */
-  // const sentTexts = mainUser.allMessages.filter(({ to }) => to === id);
-
-  // const conversation = chatUsers.map(user =>)
-  // const sentTexts = mainUser.allMessages.filter(({ to }) => to === id);
-  // const receivedTexts = chatSelected.allMessages.filter(
-  //   ({ to }) => to === mainUser.id
-  // );
-
-  const zinutes = chatUsers.map((user) => Object.values(user.allMessages));
-  /* laygroundend */
   return (
     <>
       <Sidebar

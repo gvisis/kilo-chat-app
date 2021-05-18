@@ -6,7 +6,8 @@ body {
     rgba(55, 205, 218, 1) 0%,
     rgba(38, 191, 204, 1) 33%,
     rgba(39, 172, 184, 1) 100%
-  );
+    );
+    scroll-behavior: smooth;
 }
 
   .container {
@@ -21,7 +22,7 @@ body {
   padding: 0 25px;
   height: 100vh;
 }
-.not-found-container {
+.erLoading-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -30,7 +31,7 @@ body {
   background-color: $white;
 };
 
-// Scrollbar styling
+// Scrollbar styling for chrome
 /* width */
 ::-webkit-scrollbar {
   width: 10px;
@@ -47,6 +48,7 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #555; 
 }
+
 @media only screen and (max-width: 768px) {
   .container {
     grid-template-columns: 15px 1fr 15px;

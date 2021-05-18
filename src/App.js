@@ -3,7 +3,7 @@ import "./App.scss";
 
 import { validateEmail } from "./js/validateEmail";
 import Login from "./components/Login/Login";
-import NotFound from "./components/NotFound/NotFound";
+import Error from "./components/Error/Error";
 import { Route, Redirect, Switch, useHistory } from "react-router-dom";
 import ChatApp from "./components/ChatApp/Chat";
 import React, { useState } from "react";
@@ -18,7 +18,7 @@ function App() {
 
   const mainUserEmail = "demo@demo.com";
 
-  const userLogin = (email) => {
+  const userLogin = (email,password) => {
     if (validateEmail(email) && mainUserEmail === email) {
       setIsLoggedIn(true);
       history.push("/");
@@ -49,7 +49,7 @@ function App() {
             isError={isError}
           />
         </Route>
-        <Route path="*" component={NotFound} />
+        <Route path="*" component={Error} />
       </Switch>
     </div>
   );

@@ -6,6 +6,7 @@
 }
 .chat_container {
   overflow-y: auto;
+  scroll-behavior: smooth;
   background-color: $white;
   grid-column: auto / span 9;
   display: flex;

@@ -39,7 +39,7 @@ aside.convo-list {
       color: $blue-yonder;
     }
   }
-  
+
   img {
     width: 80px;
     height: 80px;
@@ -65,7 +65,6 @@ aside.convo-list {
   height: inherit;
   @include margin-bottom;
   overflow: auto;
-  
 
   .sidebar_chat-item {
     display: flex;
@@ -78,7 +77,7 @@ aside.convo-list {
     &:hover,
     &:active {
       border-radius: 15px;
-      background-color: lighten($darker-blue,10%);
+      background-color: lighten($darker-blue, 10%);
       color: $white;
       box-shadow: 0px 0px 20px #60719681;
       cursor: pointer;
@@ -102,9 +101,6 @@ aside.convo-list {
       font-size: 0.9rem;
       font-weight: 500;
       margin-bottom: 10px;
-    }
-    .chat_user-message {
-      font-size: 0.7rem;
     }
   }
 }

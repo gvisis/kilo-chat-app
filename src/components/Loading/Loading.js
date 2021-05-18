@@ -2,7 +2,7 @@ import React from "react";
 
 const Loading = () => {
   return (
-    <main className="not-found-container">
+    <main className="erLoading-container">
       <h2>Content loading...</h2>
     </main>
   );
