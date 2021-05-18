@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 
 function Profile({ handleEdit, mainUser }) {
-  const [mainUserValues, setMainUserValues] = useState(mainUser);
-
-  const { firstName, lastName, city, phone, username, email } = mainUser;
+  const [mainUserValues, setMainUserValues] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const getKeys = (key) => {
     const allowedKeys = [
@@ -21,21 +20,39 @@ function Profile({ handleEdit, mainUser }) {
     }
   };
 
-  //   const filteredByKey = Object.fromEntries(
-  //     Object.entries(mainUser).filter(([key]) => getKeys(key))
-  //   );
+  //   Changes values in the input field
+  const handleChange = (e, index, key) => {
+    console.log(mainUserValues);
+    mainUserValues[index][key] = e.target.value;
+    setMainUserValues([...mainUserValues]);
+  };
 
-  const filteredByKey = Object.entries(mainUser)
-    .filter(([key]) => getKeys(key))
-    .map((e) => ({ [e[0]]: e[1] }));
-  console.log(filteredByKey);
+  //   Filters only required entries by the key
 
-  for (let item of filteredByKey) {
-    Object.entries(item).map(([key, value]) =>
-      console.log("key:", key, "value:", value)
+  useEffect(() => {
+    const filteredValuesByKey = Object.entries(mainUser)
+      .filter(([key]) => getKeys(key))
+      .map((e) => ({ [e[0]]: e[1] }));
+    setMainUserValues(filteredValuesByKey);
+    setIsLoading(false);
+    return () => {
+      setIsLoading(true);
+    };
+  }, [handleEdit]);
+
+  if (isLoading) {
+    return (
+      <section className="chat_container">
+        <div className="chat_container-messages">
+          <div className="profile-container">
+            <header>
+              <h3>Loading...</h3>
+            </header>
+          </div>
+        </div>
+      </section>
     );
   }
-
   return (
     <section className="chat_container">
       <div className="chat_container-messages">
@@ -45,17 +62,16 @@ function Profile({ handleEdit, mainUser }) {
           </header>
           <main>
             <form>
-              {filteredByKey.map((item) => {
-                return Object.entries(item).map(([key, value], index) => {
+              {mainUserValues.map((item, index) => {
+                return Object.entries(item).map(([key, keyValue]) => {
                   return (
-                    <div className="profile_input-row">
+                    <div key={index} className="profile_input-row">
                       <label className="profile_input-title">{key}</label>
                       <input
-                        key={index}
-                        value={value}
+                        value={keyValue}
                         className="profile_input"
                         type="text"
-                        onChange={(e) => setMainUserValues(e.target.value)}
+                        onChange={(e) => handleChange(e, index, key)}
                       />
                     </div>
                   );
@@ -76,17 +92,3 @@ function Profile({ handleEdit, mainUser }) {
 }
 
 export default Profile;
-
-// {
-//     "name": {
-//         "firstName": "Demo",
-//         "lastName": "Account"
-//     },
-//     "city": "Vilnius",
-//     "email": "demo@demo.com",
-//     "mainUser": true,
-//     "id": "e7315309-6bdf-4365-966a-0ae037fc73d3",
-//     "username": "yellowcat",
-//     "phone": "07542-132-222",
-//     "picture": "https://randomuser.me/api/portraits/lego/6.jpg",
-// }
