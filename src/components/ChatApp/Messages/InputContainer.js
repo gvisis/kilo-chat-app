@@ -27,7 +27,7 @@ const InputContainer = ({
         setErrorMessageState(false);
       }, timeOut);
     }
-  }, [messageError]);
+  }, [setErrorMessageState,messageError]);
 
   return (
     <form className="chat_container-input" onSubmit={handleSendForm}>

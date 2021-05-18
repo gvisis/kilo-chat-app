@@ -46,7 +46,7 @@ function Profile({ handleEdit, mainUser }) {
         handleEdit();
       }, timeOut);
     }
-  }, [successfulEdit]);
+  }, [successfulEdit,handleEdit]);
 
   //   Filters only required entries by the key
   useEffect(() => {
@@ -58,7 +58,7 @@ function Profile({ handleEdit, mainUser }) {
     return () => {
       setIsLoading(true);
     };
-  }, [handleEdit]);
+  }, [handleEdit,mainUser]);
 
   if (isLoading) {
     return (

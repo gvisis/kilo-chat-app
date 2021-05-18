@@ -42,24 +42,24 @@ function ChatApp({ isLoading, setLoadingState }) {
     setEditProfile(!editProfile);
   };
 
-  // Fetching the first data from API
-  const getUsersData = async (url) => {
-    await axios
-      .get(url, {
-        headers: headers,
-      })
-      .then((response) => {
-        filterAndSetUsers(response.data);
-        setLoadingState(false);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
+  
   useEffect(() => {
+    // Fetching the first data from API
+    const getUsersData = async (url) => {
+      await axios
+        .get(url, {
+          headers: headers,
+        })
+        .then((response) => {
+          filterAndSetUsers(response.data);
+          setLoadingState(false);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    };
     getUsersData(apiUrl);
-  }, []);
+  }, [setLoadingState]);
 
   if (isLoading) {
     return <Loading />;

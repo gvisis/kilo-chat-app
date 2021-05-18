@@ -37,7 +37,7 @@ const Messages = ({ mainUser, chatSelected, chatUsers }) => {
 
     useEffect(() => {
       setFakeMessage(fakeMessage);
-    }, [chatSelected])
+    }, [chatSelected,fakeMessage])
 
 
   // Message updates to API 
