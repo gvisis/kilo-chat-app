@@ -1,9 +1,8 @@
 import "../../sass/login.scss";
 
-import { React, useState, useEffect } from "react";
+import { React, useState } from "react";
 import { FaEnvelope, FaKey } from "react-icons/fa";
 import Error from "../Error/Error";
-import { Redirect } from "react-router";
 
 function Login({ userLogin, isError }) {
 
@@ -23,10 +22,6 @@ function Login({ userLogin, isError }) {
     userLogin(userEmail, userPassword);
   };
 
-  if (isError) {
-    return <Error />
-  }
-  
   return (
     <main className="login-main">
       <form className="login-wrap" onSubmit={sendData}>

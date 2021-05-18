@@ -11,6 +11,8 @@ const Messages = ({ mainUser, chatSelected, chatUsers }) => {
   const scrollTo = useRef();
   const [textValue, setTextValue] = useState("");
   const [messageError, setMessageError] = useState(false);
+  const [fakeMessage, setFakeMessage] = useState({});
+
 
   const setInputValue = (value) => {
     setTextValue(value);
@@ -33,11 +35,15 @@ const Messages = ({ mainUser, chatSelected, chatUsers }) => {
     .slice()
     .sort((a, b) => moment(b.sentTime).diff(a.sentTime));
 
+    useEffect(() => {
+      setFakeMessage(fakeMessage);
+    }, [chatSelected])
+
   const updateApiData = async (messageToAdd) => {
     if (messageToAdd.sentText.length > 0) {
       const fakeMessage = {
         sentTime: moment().add(1, 'seconds').format(),
-        sentText: messageToAdd.sentText + " this is repeated message.",
+        sentText: messageToAdd.sentText + " (this is repeated message)",
         to: mainUser.id,
       };
       chatSelected.allMessages.push(fakeMessage);

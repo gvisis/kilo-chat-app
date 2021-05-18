@@ -18,9 +18,12 @@ function App() {
   const mainUserEmail = "demo@demo.com";
 
   const userLogin = (email,password) => {
+    console.log(password);
     if (validateEmail(email) && mainUserEmail === email) {
-      setIsLoggedIn(true);
-      history.push("/");
+      if(password.length > 0){
+        setIsLoggedIn(true);
+        history.push("/");
+      }
     } else {
       setIsError("Wrong email or password");
     }
