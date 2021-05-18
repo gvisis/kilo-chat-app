@@ -4,7 +4,7 @@ import React from "react";
 const SingleMessage = ({ conversation, mainUser, chatSelected }) => {
 
   const {
-    name: { firstName },
+    firstName,
     picture,
     id,
   } = chatSelected;

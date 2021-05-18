@@ -48,7 +48,6 @@ function ChatApp({ isLoading, setLoadingState }) {
         headers: headers,
       })
       .then((response) => {
-        console.log(response.data);
         filterAndSetUsers(response.data);
         setLoadingState(false);
       })
@@ -74,7 +73,7 @@ function ChatApp({ isLoading, setLoadingState }) {
         handleEdit={handleEdit}
       />
       {editProfile ? (
-        <Profile handleEdit={handleEdit} />
+        <Profile mainUser={mainUser} handleEdit={handleEdit} />
       ) : (
         <ChatWindow
           isErorr={isErorr}

@@ -105,7 +105,7 @@ const Messages = ({ mainUser, chatSelected, chatUsers }) => {
       <header className="chat_container-title padding-10">
         <div className="chat_user-active">
           <div className="chat_user-active-name">
-            {chatSelected.name.firstName} {chatSelected.name.lastName}
+            {chatSelected.firstName} {chatSelected.lastName}
           </div>
           <div className="chat_user-active-status"></div>
           <span>online</span>

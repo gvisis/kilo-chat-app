@@ -2,21 +2,14 @@ import React from "react";
 import { FaEdit, FaSignOutAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-function Sidebar({ chatUsers, selectChat, mainUser, handleEdit}) {
+function Sidebar({ chatUsers, selectChat, mainUser, handleEdit }) {
   // Getting and destructuring the info of the main user
-  const {
-    name: { firstName, lastName },
-    city,
-    email,
-    phone,
-    picture,
-    username,
-  } = mainUser;
+  const { firstName, lastName, city, picture } = mainUser;
 
   const editIconStyle = {
     marginRight: "5px",
   };
-  
+
   return (
     <aside className="convo-list">
       {mainUser && (
@@ -37,11 +30,7 @@ function Sidebar({ chatUsers, selectChat, mainUser, handleEdit}) {
         {chatUsers
           .filter((chatUser) => chatUser.mainUser !== true)
           .map((chatUser) => {
-            const {
-              name: { firstName, lastName },
-              id,
-              picture,
-            } = chatUser;
+            const { firstName, lastName, id, picture } = chatUser;
 
             return (
               <div
