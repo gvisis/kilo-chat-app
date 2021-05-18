@@ -1,4 +1,8 @@
-@import "./global";
+@import './sass/variables';
+@import './sass/login.scss';
+@import './sass/chat-window.scss';
+@import './sass/sidebar.scss';
+@import './sass/profile.scss';
 
 body {
   background: linear-gradient(
