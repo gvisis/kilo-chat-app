@@ -16,7 +16,7 @@ function Sidebar({ chatUsers, selectChat, mainUser }) {
   const editIconStyle = {
     marginRight: "5px",
   };
-
+  
   return (
     <aside className="convo-list">
       {mainUser && (
@@ -39,13 +39,8 @@ function Sidebar({ chatUsers, selectChat, mainUser }) {
           .map((chatUser) => {
             const {
               name: { firstName, lastName },
-              city,
-              email,
-              phone,
               id,
-              allMessages,
               picture,
-              username,
             } = chatUser;
 
             return (

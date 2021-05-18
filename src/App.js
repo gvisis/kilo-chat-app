@@ -7,7 +7,6 @@ import Error from "./components/Error/Error";
 import { Route, Redirect, Switch, useHistory } from "react-router-dom";
 import ChatApp from "./components/ChatApp/Chat";
 import React, { useState } from "react";
-import * as apiOperations from "./js/getSendData";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);

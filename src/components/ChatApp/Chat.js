@@ -1,19 +1,17 @@
 import React, { useState, useEffect } from "react";
 import Sidebar from "./Sidebar/Sidebar";
 import ChatWindow from "./ChatWindow/ChatWindow";
-import Loading from "../Loading/Loading";
 import Error from "../Error/Error";
+import Loading from "../Loading/Loading";
+import { apiUrl, headers} from '../../js/apiSettings';
 import axios from "axios";
 
 function ChatApp({ isLoading, setLoadingState }) {
-  const [chatUsers, setChatUsers] = useState([]);
+  const [chatUsers, setChatUsers] = useState({});
   const [chatSelected, setChatSelected] = useState({});
   const [mainUser, setMainUser] = useState({});
   const [isErorr, setIsError] = useState(null);
 
-
-  const usersApiUrl =
-    "https://api.jsonbin.io/b/60a2c2f3d5b0ee05c1ef7861/latest";
 
   // Sets state for the selected user by id
   const selectChat = (userId) => {
@@ -36,21 +34,15 @@ function ChatApp({ isLoading, setLoadingState }) {
     setMainUser(mainUser[0]);
   };
 
-  // API Settings
-  const apiKey = "$2b$10$zsQeFc4HAPaWVNwcqq1M3eCNVtIzBNNQ4tybT4HRbzs8iP9dJoLpO";
-  const headers = {
-    "Content-Type": "application/json",
-    "secret-key": apiKey,
-    versioning: "false",
-  };
 
-  const getUsersData = async (apiUrl) => {
+ const getUsersData = async (url) => {
     await axios
-      .get(apiUrl, {
+      .get(url, {
         headers: headers,
       })
       .then((response) => {
-        filterAndSetUsers(response.data.users);
+        console.log(response.data);
+        filterAndSetUsers(response.data);
         setLoadingState(false);
       })
       .catch((error) => {
@@ -59,7 +51,7 @@ function ChatApp({ isLoading, setLoadingState }) {
   };
 
   useEffect(() => {
-    getUsersData(usersApiUrl);
+    getUsersData(apiUrl);
   }, []);
 
   if (isLoading) {
@@ -69,8 +61,6 @@ function ChatApp({ isLoading, setLoadingState }) {
   return (
     <>
       <Sidebar
-        isLoading={isLoading}
-        isErorr={isErorr}
         chatUsers={chatUsers}
         selectChat={selectChat}
         mainUser={mainUser}

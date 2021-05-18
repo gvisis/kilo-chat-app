@@ -1,12 +1,13 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
-import { v4 as uuidv4 } from "uuid";
+import {apiUrl, headers} from '../../../js/apiSettings';
+
 import moment from "moment";
 
 import InputContainer from "./InputContainer";
 import SingleMessage from "./SingleMessage";
 
-const Messages = ({ mainUser, chatSelected }) => {
+const Messages = ({ mainUser, chatSelected, chatUsers }) => {
   const scrollTo = useRef();
   const [textValue, setTextValue] = useState("");
   const [messageError, setMessageError] = useState(false);
@@ -18,18 +19,43 @@ const Messages = ({ mainUser, chatSelected }) => {
     setMessageError(value);
   };
 
-  const updateApiData = (apiUrl, messageToAdd, headers) => {
-    // await axios
-    //   .put(apiUrl, messages, {
-    //     headers: headers,
-    //   })
-    //   .then((response) => {
-    //     console.log(response.status);
-    //   })
-    //   .catch((error) => {
-    //     console.log(error.message);
-    //   });
-    return true;
+  // Filter messages to the same person
+  const sentTexts = mainUser.allMessages.filter(
+    ({ to }) => to === chatSelected.id
+  );
+  const receivedTexts = chatSelected.allMessages.filter(
+    ({ to }) => to === mainUser.id
+  );
+
+  //Concat the converastion and sort it by time
+  const concatedConversation = sentTexts.concat(receivedTexts);
+  const conversation = concatedConversation
+    .slice()
+    .sort((a, b) => moment(b.sentTime).diff(a.sentTime));
+
+  const updateApiData = async (messageToAdd) => {
+    if (messageToAdd.sentText.length > 0) {
+      const fakeMessage = {
+        sentTime: moment().add(1, 'seconds').format(),
+        sentText: messageToAdd.sentText + " this is repeated message.",
+        to: mainUser.id,
+      };
+      chatSelected.allMessages.push(fakeMessage);
+      await axios
+        .put(apiUrl, chatUsers, {
+          headers: headers,
+        })
+        .then((response) => {
+          if (response.ok) {
+            setMessageError(false)
+            return true;
+          }
+        })
+        .catch((error) => {
+          setMessageError(true)
+          return false;
+        });
+    }
   };
 
   const handleSendForm = (e) => {
@@ -45,17 +71,20 @@ const Messages = ({ mainUser, chatSelected }) => {
 
   const sendMessage = (messageToBeSent, userId) => {
     if (userId !== undefined || userId !== null) {
+      // Prepare the message object
       const message = {
         sentTime: moment().format(),
         sentText: messageToBeSent,
         to: userId,
       };
+      mainUser.allMessages.push(message);
 
-      if (updateApiData()) {
+      // Check and update Api Data
+      updateApiData(message);
+      if (updateApiData(message)) {
         setTextValue("");
       } else {
-        console.log(updateApiData());
-        setTextValue("error");
+        setTextValue("");
         setMessageError(true);
       }
 
@@ -64,30 +93,6 @@ const Messages = ({ mainUser, chatSelected }) => {
       return false;
     }
   };
-
-  // const receiveMessage = (messageToSendBack, backToId) => {
-  //   const fakeMessage = {
-  //     sentTime: moment().format(),
-  //     sentText: messageToSendBack + " this is repeated message.",
-  //     to: backToId,
-  //   };
-  //   chatSelected.allMessages.push(fakeMessage);
-  // scrollTo.current.scrollIntoView({ behavior: "smooth" });
-  // };
-
-  // Filter messages to the same person
-  const sentTexts = mainUser.allMessages.filter(
-    ({ to }) => to === chatSelected.id
-  );
-  const receivedTexts = chatSelected.allMessages.filter(
-    ({ to }) => to === mainUser.id
-  );
-
-  //Concat the converastion and sort it by time
-  const concatedConversation = sentTexts.concat(receivedTexts);
-  const conversation = concatedConversation
-    .slice()
-    .sort((a, b) => moment(b.sentTime).diff(a.sentTime));
 
   return (
     <section className="chat_container">
@@ -113,7 +118,6 @@ const Messages = ({ mainUser, chatSelected }) => {
           textValue={textValue}
           handleSendForm={handleSendForm}
           setInputValue={setInputValue}
-          conversation={conversation}
           messageError={messageError}
           setErrorMessageState={setErrorMessageState}
         />

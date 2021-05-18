@@ -28,7 +28,7 @@ const SingleMessage = ({ conversation, mainUser, chatSelected }) => {
               <div className="message-text">
                 {sentText}
                 <div className="message-time">
-                  {moment().format("D/MM/YYYY HH:mm", sentTime)}
+                  {moment(sentTime).format("D/MM/YYYY HH:mm")}
                 </div>
               </div>
             </div>
