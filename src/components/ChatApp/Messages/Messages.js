@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import axios from 'axios';
+import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
 import moment from "moment";
 
@@ -9,14 +9,16 @@ import SingleMessage from "./SingleMessage";
 const Messages = ({ mainUser, chatSelected }) => {
   const scrollTo = useRef();
   const [textValue, setTextValue] = useState("");
-  const [isError, setIsError] = useState(true);
+  const [messageError, setMessageError] = useState(false);
 
   const setInputValue = (value) => {
     setTextValue(value);
   };
+  const setErrorMessageState = (value) => {
+    setMessageError(value);
+  };
 
   const updateApiData = async (apiUrl, messageToAdd, headers) => {
-
     // await axios
     //   .put(apiUrl, messages, {
     //     headers: headers,
@@ -27,12 +29,13 @@ const Messages = ({ mainUser, chatSelected }) => {
     //   .catch((error) => {
     //     console.log(error.message);
     //   });
+    return false;
   };
 
   const handleSendForm = (e) => {
     e.preventDefault();
 
-    // Checking if value is valid
+    // Checking if value is not null
     if (textValue !== null || textValue.length > 0) {
       sendMessage(textValue, chatSelected.id);
     } else {
@@ -41,22 +44,19 @@ const Messages = ({ mainUser, chatSelected }) => {
   };
 
   const sendMessage = (messageToBeSent, userId) => {
-    if (
-      (messageToBeSent.length !== 0 && userId !== undefined) ||
-      userId !== null
-    ) {
+    if (userId !== undefined || userId !== null) {
       const message = {
         sentTime: moment().format(),
         sentText: messageToBeSent,
         to: userId,
       };
-      
-      if (updateApiData(message)) {
+
+      if (!updateApiData(message)) {
         setTextValue("");
       } else {
-        setIsError("There was a problem sending your message")
+        setMessageError(true);
+        setTextValue("");
       }
-      // receiveMessage(messageToBeSent, mainUser.id);
       scrollTo.current.scrollIntoView({ behavior: "smooth" });
     } else {
       return false;
@@ -74,11 +74,13 @@ const Messages = ({ mainUser, chatSelected }) => {
   // };
 
   // Filter messages to the same person
-  const sentTexts = mainUser.allMessages.filter(({ to }) => to === chatSelected.id);
+  const sentTexts = mainUser.allMessages.filter(
+    ({ to }) => to === chatSelected.id
+  );
   const receivedTexts = chatSelected.allMessages.filter(
     ({ to }) => to === mainUser.id
   );
-    
+
   //Concat the converastion and sort it by time
   const concatedConversation = sentTexts.concat(receivedTexts);
   const conversation = concatedConversation
@@ -98,7 +100,11 @@ const Messages = ({ mainUser, chatSelected }) => {
       </header>
       <main className="chat_container-messages padding-10">
         <span ref={scrollTo}></span>
-        <SingleMessage conversation={conversation} mainUser={mainUser} chatSelected={chatSelected} />
+        <SingleMessage
+          conversation={conversation}
+          mainUser={mainUser}
+          chatSelected={chatSelected}
+        />
       </main>
       <footer className="chat_container-send padding-10">
         <InputContainer
@@ -106,7 +112,8 @@ const Messages = ({ mainUser, chatSelected }) => {
           handleSendForm={handleSendForm}
           setInputValue={setInputValue}
           conversation={conversation}
-          isError={isError}
+          messageError={messageError}
+          setErrorMessageState={setErrorMessageState}
         />
       </footer>
     </section>

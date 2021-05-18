@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FaPaperPlane } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -7,24 +7,32 @@ const InputContainer = ({
   handleSendForm,
   setInputValue,
   textValue,
-  isError,
+  messageError,
+  setErrorMessageState,
 }) => {
 
-  if (isError) {
-    toast.error(isError, {
-      position: "top-right",
-      autoClose: 3000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
-  }
+  useEffect(() => {
+    const timeOut = 3000;
+    if (messageError) {
+      toast.error("Error sending your message", {
+        position: "top-right",
+        autoClose: timeOut,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: false,
+      });
+    }
+    return () => {
+      setTimeout(() => {
+        setErrorMessageState(false)
+      }, timeOut);
+    }
+  }, [messageError])
 
   return (
     <form className="chat_container-input" onSubmit={handleSendForm}>
-      {isError && (
+      {messageError && (
         <div>
           <ToastContainer />
         </div>
