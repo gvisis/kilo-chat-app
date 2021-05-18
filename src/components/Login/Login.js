@@ -1,4 +1,3 @@
-import "../../sass/login.scss";
 import { React, useState } from "react";
 import { FaEnvelope, FaKey } from "react-icons/fa";
 
