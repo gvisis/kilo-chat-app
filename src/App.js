@@ -15,22 +15,25 @@ function App() {
 
   let history = useHistory();
 
-  const mainUserEmail = "demo@demo.com";
+  const mainUserLogin = "demo@demo.com";
+  const mainUserPassword = "demo";
 
-  const userLogin = (email,password) => {
-    console.log(password);
-    if (validateEmail(email) && mainUserEmail === email) {
-      if(password.length > 0){
-        setIsLoggedIn(true);
-        history.push("/");
-      }
+  const userLogin = (email, password) => {
+    if (
+      validateEmail(email) &&
+      mainUserLogin === email &&
+      password.length > 0 &&
+      mainUserPassword === password
+    ) {
+      setIsLoggedIn(true);
+      history.push("/");
     } else {
       setIsError("Wrong email or password");
     }
   };
 
   const setLoadingState = (bool) => {
-      setIsLoading(bool);
+    setIsLoading(bool);
   };
 
   return (
