@@ -18,7 +18,7 @@ const Messages = ({ mainUser, chatSelected }) => {
     setMessageError(value);
   };
 
-  const updateApiData = async (apiUrl, messageToAdd, headers) => {
+  const updateApiData = (apiUrl, messageToAdd, headers) => {
     // await axios
     //   .put(apiUrl, messages, {
     //     headers: headers,
@@ -29,7 +29,7 @@ const Messages = ({ mainUser, chatSelected }) => {
     //   .catch((error) => {
     //     console.log(error.message);
     //   });
-    return false;
+    return true;
   };
 
   const handleSendForm = (e) => {
@@ -51,12 +51,14 @@ const Messages = ({ mainUser, chatSelected }) => {
         to: userId,
       };
 
-      if (!updateApiData(message)) {
+      if (updateApiData()) {
         setTextValue("");
       } else {
+        console.log(updateApiData());
+        setTextValue("error");
         setMessageError(true);
-        setTextValue("");
       }
+
       scrollTo.current.scrollIntoView({ behavior: "smooth" });
     } else {
       return false;
