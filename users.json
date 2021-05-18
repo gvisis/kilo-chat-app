@@ -1,32 +1,49 @@
 {
-   "users": [
-     {
-       "name": {
-         "firstName": "Demo",
-         "lastName": "Account"
-       },
-       "city": "Vilnius",
-       "email": "demo@demo.com",
-       "mainUser": true,
-       "id": "e7315309-6bdf-4365-966a-0ae037fc73d3",
-       "username": "yellowcat",
-       "phone": "07542-132-222",
-       "picture": "https://randomuser.me/api/portraits/lego/6.jpg",
-       "allMessages": []
-     },
-     {
-       "name": {
-         "firstName": "Sofia",
-         "lastName": "Hicks"
-       },
-       "city": "Preston",
-       "email": "sofia.hicks@example.com",
-       "id": "d68c14af-d2a0-428f-a398-376ace41cb1e",
-       "mainUser": false,
-       "username": "orangeduck525",
-       "phone": "0792-177-086",
-       "picture": "https://randomuser.me/api/portraits/women/73.jpg",
-       "allMessages": []
-     }
-   ]
- }
+  "users": [
+    {
+      "name": {
+        "firstName": "Demo",
+        "lastName": "Account"
+      },
+      "city": "Vilnius",
+      "email": "demo@demo.com",
+      "mainUser": true,
+      "id": "e7315309-6bdf-4365-966a-0ae037fc73d3",
+      "username": "yellowcat",
+      "phone": "07542-132-222",
+      "picture": "https://randomuser.me/api/portraits/lego/6.jpg",
+      "allMessages": [
+        {
+          "sentTime": "2021-05-18T04:33:25+03:00",
+          "sentText": "Atsakymas Sofijai",
+          "to": "d68c14af-d2a0-428f-a398-376ace41cb1e"
+        }
+      ]
+    },
+    {
+      "name": {
+        "firstName": "Sofia",
+        "lastName": "Hicks"
+      },
+      "city": "Preston",
+      "email": "sofia.hicks@example.com",
+      "id": "d68c14af-d2a0-428f-a398-376ace41cb1e",
+      "mainUser": false,
+      "username": "orangeduck525",
+      "phone": "0792-177-086",
+      "picture": "https://randomuser.me/api/portraits/women/73.jpg",
+      "allMessages": [
+        {
+          "sentTime": "2021-05-18T04:43:25+03:00",
+          "sentText": "nusiustas tekstas",
+          "to": "e7315309-6bdf-4365-966a-0ae037fc73d3"
+        },
+        {
+          "sentTime": "2021-05-18T04:50:25+03:00",
+          "sentText": "nusiustas tekstas pakeistas id",
+          "to": "e7315309-6bdf-4365-966a-0ae037fc73d3"
+        }
+      ]
+    }
+  ]
+}
