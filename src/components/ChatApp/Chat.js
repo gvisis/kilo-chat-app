@@ -11,7 +11,6 @@ function ChatApp({ isLoading, setLoadingState }) {
   const [chatUsers, setChatUsers] = useState({});
   const [chatSelected, setChatSelected] = useState({});
   const [mainUser, setMainUser] = useState({});
-  const [isErorr, setIsError] = useState(null);
   const [editProfile, setEditProfile] = useState(false);
 
   // Sets state for the selected user by id
@@ -26,7 +25,6 @@ function ChatApp({ isLoading, setLoadingState }) {
       }
     } catch (error) {
       console.error(error);
-      setIsError(true);
       return <Error />;
     }
   };
