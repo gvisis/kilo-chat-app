@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
-import {apiUrl, headers} from '../../../js/apiSettings';
+import { apiUrl, headers } from "../../../js/apiSettings";
 
 import moment from "moment";
 
@@ -12,7 +12,6 @@ const Messages = ({ mainUser, chatSelected, chatUsers }) => {
   const [textValue, setTextValue] = useState("");
   const [messageError, setMessageError] = useState(false);
   const [fakeMessage, setFakeMessage] = useState({});
-
 
   const setInputValue = (value) => {
     setTextValue(value);
@@ -35,16 +34,15 @@ const Messages = ({ mainUser, chatSelected, chatUsers }) => {
     .slice()
     .sort((a, b) => moment(b.sentTime).diff(a.sentTime));
 
-    useEffect(() => {
-      setFakeMessage(fakeMessage);
-    }, [chatSelected,fakeMessage])
+  useEffect(() => {
+    setFakeMessage(fakeMessage);
+  }, [chatSelected, fakeMessage]);
 
-
-  // Message updates to API 
+  // Message updates to API
   const updateApiData = async (messageToAdd) => {
     if (messageToAdd.sentText.length > 0) {
       const fakeMessage = {
-        sentTime: moment().add(1, 'seconds').format(),
+        sentTime: moment().add(1, "seconds").format(),
         sentText: messageToAdd.sentText + " (this is repeated message)",
         to: mainUser.id,
       };
@@ -55,12 +53,12 @@ const Messages = ({ mainUser, chatSelected, chatUsers }) => {
         })
         .then((response) => {
           if (response.ok) {
-            setMessageError(false)
+            setMessageError(false);
             return true;
           }
         })
         .catch((error) => {
-          setMessageError(true)
+          setMessageError(true);
           return false;
         });
     }

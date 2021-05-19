@@ -32,7 +32,7 @@ function Profile({ handleEdit, mainUser }) {
   useEffect(() => {
     const timeOut = 3000;
     if (successfulEdit) {
-      toast.success("Info Edited! (Not realy)", {
+      toast.success("Info Edited! (not)", {
         position: "top-right",
         autoClose: timeOut,
         hideProgressBar: false,
@@ -46,7 +46,7 @@ function Profile({ handleEdit, mainUser }) {
         handleEdit();
       }, timeOut);
     }
-  }, [successfulEdit,handleEdit]);
+  }, [successfulEdit, handleEdit]);
 
   //   Filters only required entries by the key
   useEffect(() => {
@@ -58,7 +58,7 @@ function Profile({ handleEdit, mainUser }) {
     return () => {
       setIsLoading(true);
     };
-  }, [handleEdit,mainUser]);
+  }, [handleEdit, mainUser]);
 
   if (isLoading) {
     return (

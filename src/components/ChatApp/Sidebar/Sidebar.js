@@ -3,7 +3,6 @@ import { FaEdit, FaSignOutAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 function Sidebar({ chatUsers, selectChat, mainUser, handleEdit }) {
-
   // Destructuring the info of the main user
   const { firstName, lastName, city, picture } = mainUser;
 

@@ -2,7 +2,6 @@ import { React, useState } from "react";
 import { FaEnvelope, FaKey } from "react-icons/fa";
 
 function Login({ userLogin, isError }) {
-
   const loginIcons = {
     color: "#29c0cd",
     width: "32px",

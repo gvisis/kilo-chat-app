@@ -3,12 +3,7 @@ import React from "react";
 
 // Single message view depending on who wrote it
 const SingleMessage = ({ conversation, mainUser, chatSelected }) => {
-
-  const {
-    firstName,
-    picture,
-    id,
-  } = chatSelected;
+  const { firstName, picture, id } = chatSelected;
 
   return (
     <>

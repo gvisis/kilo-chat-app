@@ -192,7 +192,6 @@
 }
 
 @media only screen and (max-width: 768px) {
-  
   .chat_container {
     .chat_container-title {
       &.padding-10 {
@@ -202,7 +201,7 @@
     .chat_user-active {
       justify-content: center;
       margin: 5px 0;
-      
+
       .chat_user-active-name {
         font-size: 0.8rem;
       }

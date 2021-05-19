@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Messages from "../Messages/Messages";
 
-function ChatWindow({ isError, chatSelected, mainUser, chatUsers }) {
+function ChatWindow({ chatSelected, mainUser, chatUsers }) {
   const [isUserSelected, setIsUserSelected] = useState(false);
 
   const isObjectEmpty = (object) => {

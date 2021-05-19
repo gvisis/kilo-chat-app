@@ -17,7 +17,7 @@ function ChatApp({ isLoading, setLoadingState }) {
   // Sets state for the selected user by id
   const selectChat = (userId) => {
     if (editProfile) {
-      setEditProfile(!editProfile)
+      setEditProfile(!editProfile);
     }
     try {
       if (userId !== null || userId !== undefined) {
@@ -42,7 +42,6 @@ function ChatApp({ isLoading, setLoadingState }) {
     setEditProfile(!editProfile);
   };
 
-  
   useEffect(() => {
     // Fetching the first data from API
     const getUsersData = async (url) => {
@@ -77,7 +76,6 @@ function ChatApp({ isLoading, setLoadingState }) {
         <Profile mainUser={mainUser} handleEdit={handleEdit} />
       ) : (
         <ChatWindow
-          isErorr={isErorr}
           chatSelected={chatSelected}
           mainUser={mainUser}
           chatUsers={chatUsers}

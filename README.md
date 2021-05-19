@@ -1,70 +1,123 @@
-# Getting Started with Create React App
+<!-- PROJECT LOGO -->
+<br />
+<p align="center">
+  <a href="https://github.com/gvisis/library-crud-laravel/">
+    <img src="https://i.imgur.com/aZwCWf5.png" alt="Logo" width="80" height="80">
+  </a>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+  <h3 align="center">Chi-Chat</h3>
 
-## Available Scripts
+  <p align="center">
+    Beta chat application
+    <br />
+    <br />
+    <a href="https://kilo-chat-project.netlify.app/">View Demo</a>
+    ·
+    <a href="https://github.com/gvisis/kilo-chat-app/issues">Report Bug</a>
+  </p>
+</p>
 
-In the project directory, you can run:
+<!-- TABLE OF CONTENTS -->
+<details open="open">
+  <summary><h2 style="display: inline-block">Table of Contents</h2></summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+      <ul>
+        <li><a href="#packages-used">Packages used</a></li>
+      </ul>
+      <ul>
+        <li><a href="#other">Other</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <li><a href="#screenshots">Screenshots</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ol>
+</details>
 
-### `npm start`
+<!-- ABOUT THE PROJECT -->
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## About The Project
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Made with React as a task for job application. 
 
-### `npm test`
+* Known bugs: 
+    * After you send a message, you will receive the repeated message TWICE. 
+    * Edit page not sending edited data to back API ( it was not required (?) as a task, but will be implemented in the future)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Built With
 
-### `npm run build`
+-   [React](https://reactjs.org/)
+-   [SASS](https://sass-lang.com/)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Packages used
+- [axios](https://github.com/axios/axios)
+- [moment](https://momentjs.com/)
+- [react-icons](https://react-icons.github.io/react-icons/)
+- [react-toastify](https://www.npmjs.com/package/react-toastify)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Other
+* User details from
+    -  [RandomUser API](https://randomuser.me/)
+* Chats stored at
+    - [Jsonbin.io](https://jsonbin.io/)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<!-- GETTING STARTED -->
 
-### `npm run eject`
+## Getting Started
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+To get a local copy up and running follow these steps.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Installation
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+1. Clone the repo
+    ```sh
+    git clone https://github.com/gvisis/kilo-chat-app.git
+    ```
+2. In the root directory execute the following command to install the application
+    ```sh
+    npm install 
+    ```
+3. Install NPM dependencies
+    ```sh
+    npm start   
+    ```
+4. Login page credentials. Using other details you will get an login error as shown below
+    ```sh
+    Username: demo@demo.com
+    Password: demo
+    ```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+<!-- USAGE EXAMPLES -->
 
-## Learn More
+## Screenshots
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+* Login page shows the errors when wrong email or password is entered 
+<img src="https://i.imgur.com/6Mqnilu.png" width="50%" height="50%">
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+* Basic view  of the website showing the chat and the sidebar
+<img src="https://i.imgur.com/oje7KtS.png" width="50%" height="50%">
 
-### Code Splitting
+* Edit view (not sending data to API yet). You will get this view by hovering on the user account element in top left corner
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+    <img src="https://i.imgur.com/JmNX8Ep.png" width="50%" height="50%">
 
-### Analyzing the Bundle Size
+<!-- CONTACT -->
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Contact
 
-### Making a Progressive Web App
+Give me some work! 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+[![LinkedIn][linkedin-shield]][linkedin-url]
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[linkedin-shield]: https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=whit
+[linkedin-url]: https://www.linkedin.com/in/gvidas-s-7a1104b4/

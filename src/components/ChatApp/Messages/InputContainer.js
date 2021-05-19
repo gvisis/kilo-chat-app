@@ -11,7 +11,7 @@ const InputContainer = ({
   setErrorMessageState,
 }) => {
   const timeOut = 3000;
-  
+
   useEffect(() => {
     if (messageError) {
       toast.error("Error sending your message", {
@@ -27,7 +27,7 @@ const InputContainer = ({
         setErrorMessageState(false);
       }, timeOut);
     }
-  }, [setErrorMessageState,messageError]);
+  }, [setErrorMessageState, messageError]);
 
   return (
     <form className="chat_container-input" onSubmit={handleSendForm}>

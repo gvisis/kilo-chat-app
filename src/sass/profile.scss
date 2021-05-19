@@ -5,16 +5,16 @@
       display: flex;
       flex-direction: column;
       header {
-          text-align: center;
-          text-transform: uppercase;
-          border-bottom: 1px solid $light-periwinkle;
-          width: 100%;
-          h4 {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            margin: 10px 0;
-          }
+        text-align: center;
+        text-transform: uppercase;
+        border-bottom: 1px solid $light-periwinkle;
+        width: 100%;
+        h4 {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          margin: 10px 0;
+        }
       }
       form {
         padding: 1rem;
@@ -75,12 +75,12 @@
           background-color: lightseagreen;
           transition: background-color 0.5s ease-out;
           &:hover {
-            background-color: darken(lightseagreen,10%)
+            background-color: darken(lightseagreen, 10%);
           }
           &.close-btn {
-              background-color: $light-pink;
-              &:hover {
-                background-color: darken($light-pink, 15%);
+            background-color: $light-pink;
+            &:hover {
+              background-color: darken($light-pink, 15%);
             }
           }
         }
