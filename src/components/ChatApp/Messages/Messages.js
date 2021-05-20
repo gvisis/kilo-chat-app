@@ -86,7 +86,6 @@ const Messages = ({ mainUser, chatSelected, chatUsers }) => {
       mainUser.allMessages.push(message);
 
       // Check and update Api Data
-      updateApiData(message);
       if (updateApiData(message)) {
         setTextValue("");
       } else {
