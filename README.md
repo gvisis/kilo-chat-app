@@ -51,7 +51,7 @@
 Made with React as a task for job application. 
 
 * Known bugs: 
-    * After you send a message, you will receive the repeated message TWICE. 
+    * ~~After you send a message, you will receive the repeated message TWICE.~~ (Fixed: 05-20) 
     * Edit page not sending edited data to back API ( it was not required (?) as a task, but will be implemented in the future)
 
 ### Built With
@@ -101,7 +101,7 @@ To get a local copy up and running follow these steps.
 
 ## Screenshots
 
-* Login page shows the errors when wrong email or password is entered 
+* Login page shows the errors when wrong email or password is entered
 <img src="https://i.imgur.com/6Mqnilu.png" width="50%" height="50%">
 
 * Basic view  of the website showing the chat and the sidebar
