@@ -1,12 +1,10 @@
-import "./sass/_variables.scss";
-import "./App.scss";
-
+import React, { useState } from "react";
+import { Route, Redirect, Switch, useHistory } from "react-router-dom";
 import { validateEmail } from "./js/validateEmail";
 import Login from "./components/Login/Login";
 import Error from "./components/Error/Error";
-import { Route, Redirect, Switch, useHistory } from "react-router-dom";
 import ChatApp from "./components/ChatApp/Chat";
-import React, { useState } from "react";
+import "./App.scss";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -26,7 +24,7 @@ function App() {
       mainUserPassword === password
     ) {
       setIsLoggedIn(true);
-      setIsError(null)
+      setIsError(null);
       history.push("/");
     } else {
       setIsError("Wrong email or password");
@@ -49,11 +47,7 @@ function App() {
           )}
         </Route>
         <Route path="/login/">
-          <Login
-            userLogin={userLogin}
-            isLoggedIn={isLoggedIn}
-            isError={isError}
-          />
+          <Login userLogin={userLogin} isError={isError} />
         </Route>
         <Route path="*" component={Error} />
       </Switch>
