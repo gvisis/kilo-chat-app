@@ -1,4 +1,4 @@
-export function validateEmail(input) {
+export const validateEmail = (input) => {
   const regex =
     /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
   let m = regex.exec(input);
@@ -7,4 +7,4 @@ export function validateEmail(input) {
     return true;
   }
   return false;
-}
+};
