@@ -6,7 +6,7 @@ import Error from "./components/Error/Error";
 import ChatApp from "./components/ChatApp/Chat";
 import "./App.scss";
 
-function App() {
+const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(null);
@@ -53,6 +53,6 @@ function App() {
       </Switch>
     </div>
   );
-}
+};
 
 export default App;

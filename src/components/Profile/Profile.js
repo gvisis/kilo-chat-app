@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-function Profile({ handleEdit, mainUser }) {
+const Profile = ({ handleEdit, mainUser }) => {
   const [mainUserValues, setMainUserValues] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [successfulEdit, setSuccessfulEdit] = useState(false);
@@ -119,6 +119,6 @@ function Profile({ handleEdit, mainUser }) {
       </div>
     </section>
   );
-}
+};
 
 export default Profile;
