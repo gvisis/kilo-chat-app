@@ -1,14 +1,7 @@
 import { React, useState } from "react";
-import { FaEnvelope, FaKey } from "react-icons/fa";
+import { EmailIcon, PassIcon } from "./InputIcons";
 
 const Login = ({ userLogin, isError }) => {
-  const loginIcons = {
-    color: "#29c0cd",
-    width: "32px",
-    height: "32px",
-    opacity: "60%",
-    padding: "10px",
-  };
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState("");
 
@@ -27,7 +20,7 @@ const Login = ({ userLogin, isError }) => {
         <div className="login-row email">
           <label className="input-title">E-mail</label>
           <div className="input-container">
-            <FaEnvelope style={loginIcons} />
+            <EmailIcon />
             <input
               type="text"
               onChange={(e) => {
@@ -40,7 +33,7 @@ const Login = ({ userLogin, isError }) => {
         <div className="login-row pass">
           <label className="input-title">Password</label>
           <div className="input-container">
-            <FaKey style={loginIcons} />
+            <PassIcon />
             <input
               type="password"
               onChange={(e) => {

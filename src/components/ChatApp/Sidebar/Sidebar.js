@@ -1,14 +1,11 @@
 import React from "react";
-import { FaEdit, FaSignOutAlt } from "react-icons/fa";
+import { FaSignOutAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { EditButton } from "./EditButton";
 
 const Sidebar = ({ chatUsers, selectChat, mainUser, handleEdit }) => {
   // Destructuring the info of the main user
   const { firstName, lastName, city, picture } = mainUser;
-
-  const editIconStyle = {
-    marginRight: "5px",
-  };
 
   return (
     <aside className="convo-list">
@@ -20,7 +17,7 @@ const Sidebar = ({ chatUsers, selectChat, mainUser, handleEdit }) => {
           </span>
           <span className="profile-status">{city}</span>
           <div className="profile-edit" onClick={handleEdit}>
-            <FaEdit style={editIconStyle} />
+            <EditButton />
             <span>Edit</span>
           </div>
         </div>
@@ -56,6 +53,6 @@ const Sidebar = ({ chatUsers, selectChat, mainUser, handleEdit }) => {
       </div>
     </aside>
   );
-}
+};
 
 export default Sidebar;
