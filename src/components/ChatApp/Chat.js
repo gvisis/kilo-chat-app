@@ -7,7 +7,7 @@ import Loading from "../Loading/Loading";
 import { apiUrl, headers } from "../../js/apiSettings";
 import axios from "axios";
 
-function ChatApp({ isLoading, setLoadingState }) {
+const ChatApp = ({ isLoading, setLoadingState }) => {
   const [chatUsers, setChatUsers] = useState({});
   const [chatSelected, setChatSelected] = useState({});
   const [mainUser, setMainUser] = useState({});
@@ -81,5 +81,5 @@ function ChatApp({ isLoading, setLoadingState }) {
       )}
     </>
   );
-}
+};
 export default ChatApp;
