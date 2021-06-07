@@ -10,7 +10,6 @@ import "./App.scss";
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  // const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(null);
 
   let history = useHistory();
@@ -32,10 +31,6 @@ const App = () => {
       setIsError("Wrong email or password");
     }
   };
-
-  // const setLoadingState = (bool) => {
-  //   setIsLoading(bool);
-  // };
 
   return (
     <div className="container">
