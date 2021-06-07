@@ -10,7 +10,7 @@ import "./App.scss";
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
+  // const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(null);
 
   let history = useHistory();
@@ -33,9 +33,9 @@ const App = () => {
     }
   };
 
-  const setLoadingState = (bool) => {
-    setIsLoading(bool);
-  };
+  // const setLoadingState = (bool) => {
+  //   setIsLoading(bool);
+  // };
 
   return (
     <div className="container">
@@ -43,7 +43,7 @@ const App = () => {
       <Switch>
         <Route exact path="/">
           {isLoggedIn ? (
-            <ChatApp isLoading={isLoading} setLoadingState={setLoadingState} />
+            <ChatApp />
           ) : (
             <Redirect to="/login/" />
           )}

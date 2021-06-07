@@ -7,12 +7,17 @@ import ChatWindow from "./ChatWindow/ChatWindow";
 import Error from "../Error/Error";
 import Profile from "../Profile/Profile";
 import Loading from "../Loading/Loading";
+import useFetch from "../../js/useFetch";
 
-const ChatApp = ({ isLoading, setLoadingState }) => {
+const ChatApp = () => {
   const [chatUsers, setChatUsers] = useState({});
   const [chatSelected, setChatSelected] = useState({});
   const [mainUser, setMainUser] = useState({});
   const [editProfile, setEditProfile] = useState(false);
+
+  const { data, isFetchError, isFetchLoading } = useFetch(apiUrl, headers);
+  console.log("first er", isFetchError);
+  console.log("first lo", isFetchLoading);
 
   // Sets state for the selected user by id
   const selectChat = (userId) => {
@@ -32,6 +37,7 @@ const ChatApp = ({ isLoading, setLoadingState }) => {
 
   // Filters the main user
   const filterAndSetUsers = (userObject) => {
+    console.log(userObject);
     setChatUsers(userObject);
     const mainUser = { ...userObject.filter((user) => user.mainUser === true) };
     setMainUser(mainUser[0]);
@@ -41,30 +47,41 @@ const ChatApp = ({ isLoading, setLoadingState }) => {
     setEditProfile(!editProfile);
   };
 
-  useEffect(() => {
-    // Fetching the first data from API
-    const getUsersData = async (url) => {
-      await axios
-        .get(url, {
-          headers: headers,
-        })
-        .then((response) => {
-          filterAndSetUsers(response.data);
-          setLoadingState(false);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    };
-    getUsersData(apiUrl);
-  }, [setLoadingState]);
+  // useEffect(() => {
+  //   // Fetching the first data from API
+  //   const getUsersData = async (url) => {
+  //     await axios
+  //       .get(url, {
+  //         headers: headers,
+  //       })
+  //       .then((response) => {
+  //         filterAndSetUsers(response.data);
+  //         setLoadingState(false);
+  //       })
+  //       .catch((error) => {
+  //         console.log(error);
+  //       });
+  //   };
+  //   getUsersData(apiUrl);
+  // }, [setLoadingState]);
 
-  if (isLoading) {
+  useEffect(() => {
+    if (isFetchError.status === 200) {
+      filterAndSetUsers(data);
+    }
+  }, [data]);
+
+  if (isFetchLoading) {
     return <Loading />;
   }
 
+  const handleClick = () => {
+    console.log(data);
+  };
+
   return (
     <>
+      <button onClick={handleClick}>clicko</button>
       <Sidebar
         chatUsers={chatUsers}
         selectChat={selectChat}
