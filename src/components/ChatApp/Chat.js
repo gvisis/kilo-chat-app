@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
+
+import { apiUrl, headers } from "../../js/apiSettings";
 import Sidebar from "./Sidebar/Sidebar";
 import ChatWindow from "./ChatWindow/ChatWindow";
 import Error from "../Error/Error";
 import Profile from "../Profile/Profile";
 import Loading from "../Loading/Loading";
-import { apiUrl, headers } from "../../js/apiSettings";
-import axios from "axios";
 
 const ChatApp = ({ isLoading, setLoadingState }) => {
   const [chatUsers, setChatUsers] = useState({});
