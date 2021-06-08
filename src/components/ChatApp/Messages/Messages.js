@@ -1,9 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
-import { apiUrl, headers } from "../../../js/apiSettings";
-
 import moment from "moment";
 
+import { apiUrl, headers } from "../../../js/apiSettings";
 import InputContainer from "./InputContainer";
 import SingleMessage from "./SingleMessage";
 

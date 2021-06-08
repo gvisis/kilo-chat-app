@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { Route, Redirect, Switch, useHistory } from "react-router-dom";
+
 import { validateEmail } from "./js/validateEmail";
 import Login from "./components/Login/Login";
 import Error from "./components/Error/Error";
 import ChatApp from "./components/ChatApp/Chat";
+
 import "./App.scss";
 
 const App = () => {

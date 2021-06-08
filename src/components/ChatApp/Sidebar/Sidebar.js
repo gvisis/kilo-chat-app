@@ -1,6 +1,7 @@
 import React from "react";
-import { FaSignOutAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { FaSignOutAlt } from "react-icons/fa";
+
 import { EditButton } from "./EditButton";
 
 const Sidebar = ({ chatUsers, selectChat, mainUser, handleEdit }) => {
