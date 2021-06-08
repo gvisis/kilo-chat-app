@@ -19,37 +19,21 @@ const useFetch = (baseUrl, customHeaders) => {
   };
 
   const putData = async (putData) => {
-    await axios
-      .put(baseUrl, putData, {
-        headers: customHeaders,
-      })
-      .then((response) => {
+    try {
+      if (putData && putData !== null) {
+        const response = await axios.put(baseUrl, putData, {
+          headers: customHeaders,
+        });
         if (response.status !== 200) {
           throw Error("Failed sending data");
         }
         setIsFetchError(false);
-      })
-      .catch((error) => {
-        console.error(error);
-        setIsFetchError(true);
-        return false;
-      });
+      }
+    } catch (err) {
+      setIsFetchError(true);
+      setIsFetchLoading(false);
+    }
   };
-
-  // try {
-  //   if (putData && putData !== null) {
-  //     const response = await axios.put(baseUrl, putData, {
-  //       headers: customHeaders,
-  //     });
-  //     if (response.status !== 200) {
-  //       throw Error("Failed sending data");
-  //     }
-  //     setIsFetchError(false);
-  //   }
-  // } catch (err) {
-  //   setIsFetchError(true);
-  //   setIsFetchLoading(false);
-  // }
 
   useEffect(() => {
     fetchData();
