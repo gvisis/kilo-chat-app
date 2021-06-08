@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import Messages from "../Messages/Messages";
 
-const ChatWindow = ({ chatSelected, mainUser, chatUsers }) => {
+const ChatWindow = ({ chatSelected, mainUser, chatUsers,handleUserUpdate }) => {
   const [isUserSelected, setIsUserSelected] = useState(false);
 
   const isObjectEmpty = (object) => {
@@ -18,7 +18,7 @@ const ChatWindow = ({ chatSelected, mainUser, chatUsers }) => {
     } else {
       setIsUserSelected(false);
     }
-  }, [chatSelected]);
+  }, [chatSelected,chatUsers]);
 
   if (!isUserSelected) {
     return (
@@ -34,6 +34,7 @@ const ChatWindow = ({ chatSelected, mainUser, chatUsers }) => {
       chatSelected={chatSelected}
       mainUser={mainUser}
       chatUsers={chatUsers}
+      handleUserUpdate={handleUserUpdate}
     />
   );
 }

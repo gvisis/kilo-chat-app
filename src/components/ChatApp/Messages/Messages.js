@@ -5,16 +5,19 @@ import moment from "moment";
 import { apiUrl, headers } from "../../../js/apiSettings";
 import InputContainer from "./InputContainer";
 import SingleMessage from "./SingleMessage";
+import useFetch from "../../../js/useFetch";
 
-const Messages = ({ mainUser, chatSelected, chatUsers }) => {
+const Messages = ({ mainUser, chatSelected, chatUsers, handleUserUpdate }) => {
   const scrollTo = useRef();
   const [textValue, setTextValue] = useState("");
   const [messageError, setMessageError] = useState(false);
-  const [fakeMessage, setFakeMessage] = useState({});
+  const [tempUsers, setTempUsers] = useState(chatUsers);
+  const { api } = useFetch(apiUrl, headers);
 
   const setInputValue = (value) => {
     setTextValue(value);
   };
+
   const setErrorMessageState = (value) => {
     setMessageError(value);
   };
@@ -33,36 +36,6 @@ const Messages = ({ mainUser, chatSelected, chatUsers }) => {
     .slice()
     .sort((a, b) => moment(b.sentTime).diff(a.sentTime));
 
-  useEffect(() => {
-    setFakeMessage(fakeMessage);
-  }, [chatSelected, fakeMessage]);
-
-  // Message updates to API
-  const updateApiData = async (messageToAdd) => {
-    if (messageToAdd.sentText.length > 0) {
-      const fakeMessage = {
-        sentTime: moment().add(1, "seconds").format(),
-        sentText: messageToAdd.sentText + " (this is repeated message)",
-        to: mainUser.id,
-      };
-      chatSelected.allMessages.push(fakeMessage);
-      await axios
-        .put(apiUrl, chatUsers, {
-          headers: headers,
-        })
-        .then((response) => {
-          if (response.ok) {
-            setMessageError(false);
-            return true;
-          }
-        })
-        .catch((error) => {
-          setMessageError(true);
-          return false;
-        });
-    }
-  };
-
   // Checking if value ir not empty and sending it through functions
   const handleSendForm = (e) => {
     e.preventDefault();
@@ -70,33 +43,66 @@ const Messages = ({ mainUser, chatSelected, chatUsers }) => {
     if (textValue !== null || textValue.length > 0) {
       sendMessage(textValue, chatSelected.id);
     } else {
+      console.log("suveikia handlesendforma");
+      setMessageError(true);
       return false;
     }
   };
 
+  // Message updates to API
   const sendMessage = (messageToBeSent, userId) => {
     if (userId !== undefined || userId !== null) {
       // Prepare the message object
-      const message = {
-        sentTime: moment().format(),
-        sentText: messageToBeSent,
-        to: userId,
+      const mainUserMessages = {
+        ...mainUser,
+        allMessages: [
+          ...mainUser.allMessages,
+          {
+            sentTime: moment().format(),
+            sentText: messageToBeSent,
+            to: userId,
+          },
+        ],
       };
-      mainUser.allMessages.push(message);
+      const fakeUserMessages = {
+        ...chatSelected,
+        allMessages: [
+          ...chatSelected.allMessages,
+          {
+            sentTime: moment().add(1, "seconds").format(),
+            sentText: messageToBeSent + " (this is repeated message)",
+            to: mainUser.id,
+          },
+        ],
+      };
 
-      // Check and update Api Data
-      if (updateApiData(message)) {
-        setTextValue("");
-      } else {
-        setTextValue("");
-        setMessageError(true);
-      }
-
-      scrollTo.current.scrollIntoView({ behavior: "smooth" });
+      setTempUsers([
+        ...chatUsers.map((user) => {
+          if (user.id === mainUser.id) {
+            return (user = mainUserMessages);
+          } else if (user.id === chatSelected.id) {
+            return (user = fakeUserMessages);
+          }
+          return user;
+        }),
+      ]);
     } else {
       return false;
     }
   };
+
+  useEffect(() => {
+    if (api.putData(tempUsers)) {
+      setMessageError(false);
+      setTextValue("");
+      handleUserUpdate();
+      scrollTo.current.scrollIntoView({ behavior: "smooth" });
+    } else {
+      console.log('fail');
+      setTextValue("");
+      setMessageError(true);
+    }
+  }, [tempUsers]);
 
   return (
     <section className="chat_container">
