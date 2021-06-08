@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-import axios from "axios";
 import moment from "moment";
 
 import { apiUrl, headers } from "../../../js/apiSettings";
@@ -36,6 +35,19 @@ const Messages = ({ mainUser, chatSelected, chatUsers, handleUserUpdate }) => {
     .slice()
     .sort((a, b) => moment(b.sentTime).diff(a.sentTime));
 
+  // Message updates to API
+  const updateApiData = async (messageToAdd) => {
+    if (messageToAdd.sentText.length > 0) {
+      const fakeMessage = {
+        sentTime: moment().add(1, "seconds").format(),
+        sentText: messageToAdd.sentText + " (this is repeated message)",
+        to: mainUser.id,
+      };
+      chatSelected.allMessages.push(fakeMessage);
+      api.putData(chatUsers);
+    }
+  };
+
   // Checking if value ir not empty and sending it through functions
   const handleSendForm = (e) => {
     e.preventDefault();
@@ -43,66 +55,34 @@ const Messages = ({ mainUser, chatSelected, chatUsers, handleUserUpdate }) => {
     if (textValue !== null || textValue.length > 0) {
       sendMessage(textValue, chatSelected.id);
     } else {
-      console.log("suveikia handlesendforma");
       setMessageError(true);
       return false;
     }
   };
 
-  // Message updates to API
   const sendMessage = (messageToBeSent, userId) => {
     if (userId !== undefined || userId !== null) {
       // Prepare the message object
-      const mainUserMessages = {
-        ...mainUser,
-        allMessages: [
-          ...mainUser.allMessages,
-          {
-            sentTime: moment().format(),
-            sentText: messageToBeSent,
-            to: userId,
-          },
-        ],
+      const message = {
+        sentTime: moment().format(),
+        sentText: messageToBeSent,
+        to: userId,
       };
-      const fakeUserMessages = {
-        ...chatSelected,
-        allMessages: [
-          ...chatSelected.allMessages,
-          {
-            sentTime: moment().add(1, "seconds").format(),
-            sentText: messageToBeSent + " (this is repeated message)",
-            to: mainUser.id,
-          },
-        ],
-      };
+      mainUser.allMessages.push(message);
 
-      setTempUsers([
-        ...chatUsers.map((user) => {
-          if (user.id === mainUser.id) {
-            return (user = mainUserMessages);
-          } else if (user.id === chatSelected.id) {
-            return (user = fakeUserMessages);
-          }
-          return user;
-        }),
-      ]);
+      // Check and update Api Data
+      if (updateApiData(message)) {
+        setTextValue("");
+      } else {
+        setTextValue("");
+        setMessageError(true);
+      }
+
+      scrollTo.current.scrollIntoView({ behavior: "smooth" });
     } else {
       return false;
     }
   };
-
-  useEffect(() => {
-    if (api.putData(tempUsers)) {
-      setMessageError(false);
-      setTextValue("");
-      handleUserUpdate();
-      scrollTo.current.scrollIntoView({ behavior: "smooth" });
-    } else {
-      console.log('fail');
-      setTextValue("");
-      setMessageError(true);
-    }
-  }, [tempUsers]);
 
   return (
     <section className="chat_container">

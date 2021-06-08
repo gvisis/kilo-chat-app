@@ -14,7 +14,8 @@ const ChatApp = () => {
   const [chatSelected, setChatSelected] = useState({});
   const [mainUser, setMainUser] = useState({});
   const [editProfile, setEditProfile] = useState(false);
-  const { data, isFetchError, isFetchLoading, api } = useFetch(apiUrl, headers);
+
+  const { data, isFetchError, isFetchLoading } = useFetch(apiUrl, headers);
 
   // Sets state for the selected user by id
   const selectChat = (userId) => {
@@ -33,23 +34,23 @@ const ChatApp = () => {
   };
 
   // Filters the main user
-  const filterAndSetUsers = (userObject) => {
+  const filterAndSetMainUser = (userObject) => {
     setChatUsers(userObject);
     const mainUser = { ...userObject.filter((user) => user.mainUser === true) };
     setMainUser(mainUser[0]);
   };
 
-  const handleEdit = (bool) => {
+  const handleEdit = () => {
     setEditProfile(!editProfile);
   };
 
-  const handleUserUpdate = () => {
-    api.fetchData(apiUrl, headers);
+  const handleUserUpdate = (tempUsers) => {
+    filterAndSetMainUser(tempUsers);
   };
-  
+
   useEffect(() => {
-    filterAndSetUsers(data);
-  }, [data]);
+    filterAndSetMainUser(data);
+  }, [chatSelected,data]);
 
   if (isFetchLoading) {
     return <Loading />;

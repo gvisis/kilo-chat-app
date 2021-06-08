@@ -18,8 +18,8 @@ const ChatWindow = ({ chatSelected, mainUser, chatUsers,handleUserUpdate }) => {
     } else {
       setIsUserSelected(false);
     }
-  }, [chatSelected,chatUsers]);
-
+  }, [chatSelected]);
+  
   if (!isUserSelected) {
     return (
       <section className="chat_container">
