@@ -1,14 +1,14 @@
 import { React, useState } from "react";
 import { EmailIcon, PassIcon } from "./InputIcons";
 
-const Login = ({ userLogin, isError }) => {
+const Login = ({ handleUserLogin, isError }) => {
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState("");
 
   // Sending data to check for email
   const sendData = (e) => {
     e.preventDefault();
-    userLogin(userEmail, userPassword);
+    handleUserLogin(userEmail, userPassword);
   };
 
   return (

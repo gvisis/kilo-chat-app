@@ -18,7 +18,7 @@ const App = () => {
   const mainUserLogin = "demo@demo.com";
   const mainUserPassword = "demo";
 
-  const userLogin = (email, password) => {
+  const handleUserLogin = (email, password) => {
     if (
       validateEmail(email) &&
       mainUserLogin === email &&
@@ -49,7 +49,7 @@ const App = () => {
           )}
         </Route>
         <Route path="/login/">
-          <Login userLogin={userLogin} isError={isError} />
+          <Login handleUserLogin={handleUserLogin} isError={isError} />
         </Route>
         <Route path="*" component={Error} />
       </Switch>
