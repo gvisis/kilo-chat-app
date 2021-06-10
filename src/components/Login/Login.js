@@ -1,14 +1,16 @@
 import { React, useState } from "react";
 import { EmailIcon, PassIcon } from "./InputIcons";
+import Authentication from "../Login/Authentication";
 
-const Login = ({ handleUserLogin, isError }) => {
+const Login = () => {
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState("");
+  const { handleLogin, isError,isLoggedIn } = Authentication();
 
   // Sending data to check for email
   const sendData = (e) => {
     e.preventDefault();
-    handleUserLogin(userEmail, userPassword);
+    handleLogin(userEmail, userPassword);
   };
 
   return (

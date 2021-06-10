@@ -1,46 +1,31 @@
 import React, { useState } from "react";
-import { Route, Redirect, Switch, useHistory } from "react-router-dom";
+import { Switch, BrowserRouter, useHistory } from "react-router-dom";
 
-import { validateEmail } from "./js/validateEmail";
 import Login from "./components/Login/Login";
 import Error from "./components/Error/Error";
 import ChatApp from "./components/ChatApp/Chat";
+import PublicRoute from "./components/Routes/PublicRoute";
+import PrivateRoute from "./components/Routes/PrivateRoute";
+import Authentication from './components/Login/Authentication';
 
 import "./App.scss";
 
 const App = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(null);
 
-  let history = useHistory();
-
-  const mainUserLogin = "demo@demo.com";
-  const mainUserPassword = "demo";
-
-  const handleUserLogin = (email, password) => {
-    if (
-      validateEmail(email) &&
-      mainUserLogin === email &&
-      password.length > 0 &&
-      mainUserPassword === password
-    ) {
-      setIsLoggedIn(true);
-      setIsError(null);
-      history.push("/");
-    } else {
-      setIsError("Wrong email or password");
-    }
-  };
+  const { isLoggedIn } = Authentication();
 
   const setLoadingState = (bool) => {
     setIsLoading(bool);
   };
 
+  React.useEffect(() => {
+  }, [isLoggedIn])
+
   return (
     <div className="container">
-      {/* Routes */}
-      <Switch>
+      {/* <Switch>
         <Route exact path="/">
           {isLoggedIn ? (
             <ChatApp isLoading={isLoading} setLoadingState={setLoadingState} />
@@ -52,7 +37,26 @@ const App = () => {
           <Login handleUserLogin={handleUserLogin} isError={isError} />
         </Route>
         <Route path="*" component={Error} />
-      </Switch>
+      </Switch> */}
+
+      <BrowserRouter>
+        <Switch>
+          <PublicRoute
+            restricted={false}
+            component={Login}
+            path="/login"
+            exact
+          />
+          <PrivateRoute
+            component={ChatApp}
+            path="/"
+            exact
+            isLoading={isLoading}
+            setLoadingState={setLoadingState}
+          />
+          {/* <Route path="*" component={Error} /> */} */}
+        </Switch>
+      </BrowserRouter>
     </div>
   );
 };
