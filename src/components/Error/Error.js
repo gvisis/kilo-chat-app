@@ -5,7 +5,7 @@ const Error = () => {
     <main className="erLoading-container">
       <h2>Oops!</h2>
       <p>Something went wrong</p>
-      <Link to="/login">
+      <Link to="/">
         <span>Go Back</span>
       </Link>
     </main>
