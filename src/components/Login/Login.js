@@ -1,14 +1,17 @@
 import { React, useState } from "react";
-import { EmailIcon, PassIcon } from "./InputIcons";
+import { connect } from "react-redux";
 
-const Login = ({ handleUserLogin, isError }) => {
+import { EmailIcon, PassIcon } from "./InputIcons";
+import { HANDLE_LOGIN } from "../../actions";
+
+const Login = ({ dispatch, isError }) => {
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState("");
 
   // Sending data to check for email
   const sendData = (e) => {
     e.preventDefault();
-    handleUserLogin(userEmail, userPassword);
+    dispatch({ type: HANDLE_LOGIN, payload: { userEmail, userPassword } });
   };
 
   return (
@@ -52,5 +55,8 @@ const Login = ({ handleUserLogin, isError }) => {
     </main>
   );
 };
+const mapStateToProps = (state) => {
+  return { isError: state.isError };
+};
 
-export default Login;
+export default connect(mapStateToProps)(Login);

@@ -1,57 +1,21 @@
-import React, { useState } from "react";
-import { Route, Redirect, Switch, useHistory } from "react-router-dom";
+import React from "react";
+import { Switch } from "react-router-dom";
 
-import { validateEmail } from "./js/validateEmail";
 import Login from "./components/Login/Login";
 import Error from "./components/Error/Error";
 import ChatApp from "./components/ChatApp/Chat";
+import PublicRoute from "./components/Routes/PublicRoute";
+import PrivateRoute from "./components/Routes/PrivateRoute";
 
 import "./App.scss";
 
 const App = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
-  const [isError, setIsError] = useState(null);
-
-  let history = useHistory();
-
-  const mainUserLogin = "demo@demo.com";
-  const mainUserPassword = "demo";
-
-  const handleUserLogin = (email, password) => {
-    if (
-      validateEmail(email) &&
-      mainUserLogin === email &&
-      password.length > 0 &&
-      mainUserPassword === password
-    ) {
-      setIsLoggedIn(true);
-      setIsError(null);
-      history.push("/");
-    } else {
-      setIsError("Wrong email or password");
-    }
-  };
-
-  const setLoadingState = (bool) => {
-    setIsLoading(bool);
-  };
-
   return (
     <div className="container">
-      {/* Routes */}
       <Switch>
-        <Route exact path="/">
-          {isLoggedIn ? (
-            <ChatApp isLoading={isLoading} setLoadingState={setLoadingState} />
-          ) : (
-            <Redirect to="/login/" />
-          )}
-        </Route>
-        <Route path="/login/">
-          <Login handleUserLogin={handleUserLogin} isError={isError} />
-        </Route>
-        <Route path="*" component={Error} />
+        <PublicRoute restricted={false} component={Login} path="/login" exact />
+        <PrivateRoute component={ChatApp} path="/" exact />
+        <PublicRoute restricted={false} component={Error} path="*" />
       </Switch>
     </div>
   );
