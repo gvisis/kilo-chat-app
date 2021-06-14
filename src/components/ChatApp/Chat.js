@@ -1,21 +1,21 @@
 import React, { useState, useEffect } from "react";
-
-import { apiUrl, headers } from "../../js/apiSettings";
-import useFetch from "../../js/useFetch";
+import { connect } from "react-redux";
 
 import Sidebar from "./Sidebar/Sidebar";
 import ChatWindow from "./ChatWindow/ChatWindow";
 import Error from "../Error/Error";
 import Profile from "../Profile/Profile";
 import Loading from "../Loading/Loading";
+import { apiUrl, headers } from "../../js/apiSettings";
+import useFetch from "../../js/useFetch";
 
-const ChatApp = () => {
+const ChatApp = ({ isLoading, isError }) => {
   const [chatUsers, setChatUsers] = useState([]);
   const [chatSelected, setChatSelected] = useState({});
   const [mainUser, setMainUser] = useState({});
   const [editProfile, setEditProfile] = useState(false);
 
-  const { data, isFetchError, isFetchLoading } = useFetch(apiUrl, headers);
+  const { data } = useFetch(apiUrl, headers);
 
   // Sets state for the selected user by id
   const selectChat = (userId) => {
@@ -50,11 +50,11 @@ const ChatApp = () => {
 
   useEffect(() => {
     filterAndSetMainUser(data);
-  }, [chatSelected,data]);
+  }, [chatSelected, data]);
 
-  if (isFetchLoading) {
+  if (isLoading) {
     return <Loading />;
-  } else if (isFetchError) {
+  } else if (isError) {
     return <Error />;
   }
 
@@ -79,4 +79,8 @@ const ChatApp = () => {
     </>
   );
 };
-export default ChatApp;
+const mapStateToProps = (state) => {
+  const { isLoading, isError } = state;
+  return { isLoading, isError };
+};
+export default connect(mapStateToProps)(ChatApp);
