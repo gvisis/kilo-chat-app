@@ -17,6 +17,7 @@ const useFetch = (baseUrl, customHeaders) => {
         setData([...data]);
         dispatch({ type: LOADING, payload: false });
       } catch (err) {
+        console.error(err);
         dispatch({ type: ERROR, payload: true });
         dispatch({ type: LOADING, payload: false });
       }
