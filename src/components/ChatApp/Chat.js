@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { connect } from "react-redux";
 
-import { apiUrl, headers } from "../../js/apiSettings";
 import Sidebar from "./Sidebar/Sidebar";
 import ChatWindow from "./ChatWindow/ChatWindow";
 import Error from "../Error/Error";
 import Profile from "../Profile/Profile";
 import Loading from "../Loading/Loading";
+import { apiUrl, headers } from "../../js/apiSettings";
+import { LOADING } from "../../actions";
 
-const ChatApp = ({ isLoading, setLoadingState }) => {
+const ChatApp = ({ dispatch, isLoading }) => {
   const [chatUsers, setChatUsers] = useState({});
   const [chatSelected, setChatSelected] = useState({});
   const [mainUser, setMainUser] = useState({});
@@ -37,7 +39,7 @@ const ChatApp = ({ isLoading, setLoadingState }) => {
     setMainUser(mainUser[0]);
   };
 
-  const handleEdit = (bool) => {
+  const handleEdit = () => {
     setEditProfile(!editProfile);
   };
 
@@ -50,14 +52,14 @@ const ChatApp = ({ isLoading, setLoadingState }) => {
         })
         .then((response) => {
           filterAndSetUsers(response.data);
-          setLoadingState(false);
+          dispatch({ type: LOADING, payload: false });
         })
         .catch((error) => {
           console.log(error);
         });
     };
     getUsersData(apiUrl);
-  }, [setLoadingState]);
+  }, [dispatch]);
 
   if (isLoading) {
     return <Loading />;
@@ -83,4 +85,7 @@ const ChatApp = ({ isLoading, setLoadingState }) => {
     </>
   );
 };
-export default ChatApp;
+const mapStateToProps = (state) => {
+  return { isLoading: state.isLoading };
+};
+export default connect(mapStateToProps)(ChatApp);

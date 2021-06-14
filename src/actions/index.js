@@ -1,0 +1,3 @@
+export const IS_LOGGED = "IS_LOGGED"
+export const HANDLE_LOGIN = "HANDLE_LOGIN"
+export const LOADING = "LOADING"
