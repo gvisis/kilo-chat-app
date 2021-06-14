@@ -62,6 +62,7 @@ Made with React as a task for job application.
 ### Packages used
 - [axios](https://github.com/axios/axios)
 - [moment](https://momentjs.com/)
+- [redux](https://redux.js.org/)
 - [react-icons](https://react-icons.github.io/react-icons/)
 - [react-toastify](https://www.npmjs.com/package/react-toastify)
 
@@ -83,15 +84,19 @@ To get a local copy up and running follow these steps.
     ```sh
     git clone https://github.com/gvisis/kilo-chat-app.git
     ```
-2. In the root directory execute the following command to install the application
+2. Go to the repo directory 
+   ```sh
+   cd kilo-chat-app
+   ```
+3. In the root directory execute the following command to install the application
     ```sh
     npm install 
     ```
-3. Install NPM dependencies
+4. Install NPM dependencies
     ```sh
     npm start   
     ```
-4. Login page credentials. Using other details you will get an login error as shown below
+5. Login page credentials. Using other details you will get an login error as shown below
     ```sh
     Username: demo@demo.com
     Password: demo
