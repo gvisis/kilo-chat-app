@@ -39,7 +39,7 @@ const ChatApp = ({ dispatch, isLoading }) => {
     setMainUser(mainUser[0]);
   };
 
-  const handleEdit = (bool) => {
+  const handleEdit = () => {
     setEditProfile(!editProfile);
   };
 
@@ -59,7 +59,7 @@ const ChatApp = ({ dispatch, isLoading }) => {
         });
     };
     getUsersData(apiUrl);
-  }, []);
+  }, [dispatch]);
 
   if (isLoading) {
     return <Loading />;
