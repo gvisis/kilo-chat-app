@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useRef } from "react";
 import moment from "moment";
 
 import { apiUrl, headers } from "../../../js/apiSettings";
@@ -10,7 +10,6 @@ const Messages = ({ mainUser, chatSelected, chatUsers, handleUserUpdate }) => {
   const scrollTo = useRef();
   const [textValue, setTextValue] = useState("");
   const [messageError, setMessageError] = useState(false);
-  const [tempUsers, setTempUsers] = useState(chatUsers);
   const { api } = useFetch(apiUrl, headers);
 
   const setInputValue = (value) => {

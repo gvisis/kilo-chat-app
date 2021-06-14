@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect,useCallback } from "react";
 import axios from "axios";
 
 const useFetch = (baseUrl, customHeaders) => {
@@ -6,7 +6,7 @@ const useFetch = (baseUrl, customHeaders) => {
   const [isFetchError, setIsFetchError] = useState(false);
   const [isFetchLoading, setIsFetchLoading] = useState(true);
 
-  const fetchData = async (url = baseUrl) => {
+  const fetchData = useCallback(async (url = baseUrl) => {
     try {
       const response = await axios.get(url, { headers: customHeaders });
       const data = await response.data;
@@ -16,7 +16,7 @@ const useFetch = (baseUrl, customHeaders) => {
       setIsFetchError(true);
       setIsFetchLoading(false);
     }
-  };
+  },[baseUrl,customHeaders]);
 
   const putData = async (putData) => {
     try {
@@ -37,7 +37,7 @@ const useFetch = (baseUrl, customHeaders) => {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [fetchData]);
 
   const api = {
     fetchData,
