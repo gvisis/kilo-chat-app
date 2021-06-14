@@ -1,4 +1,4 @@
-import { IS_LOGGED, HANDLE_LOGIN, LOADING } from "../actions";
+import { IS_LOGGED, HANDLE_LOGIN, LOADING, ERROR } from "../actions";
 import { validateEmail } from "../js/validateEmail";
 
 const initialStore = {
@@ -23,10 +23,8 @@ export const reducer = (state = initialStore, action) => {
         userPassword.length > 0 &&
         mainUserPassword === userPassword
       ) {
-        // return console.log(state.isLoggedIn);
         return { ...state, isLoggedIn: true, isError: null };
       } else {
-        // return console.log(state.isLoggedIn);
         return {
           ...state,
           isLoggedIn: false,
@@ -35,6 +33,8 @@ export const reducer = (state = initialStore, action) => {
       }
     case LOADING:
       return { ...state, isLoading: action.payload };
+    case ERROR:
+      return { ...state, isError: action.payload };
     default:
       return state;
   }

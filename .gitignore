@@ -7,6 +7,7 @@
 
 # testing
 /coverage
+/jsonMessages.json
 
 # production
 /build

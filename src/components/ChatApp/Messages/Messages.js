@@ -1,20 +1,21 @@
-import React, { useState, useEffect, useRef } from "react";
-import axios from "axios";
+import React, { useState, useRef } from "react";
 import moment from "moment";
 
 import { apiUrl, headers } from "../../../js/apiSettings";
 import InputContainer from "./InputContainer";
 import SingleMessage from "./SingleMessage";
+import useFetch from "../../../js/useFetch";
 
-const Messages = ({ mainUser, chatSelected, chatUsers }) => {
+const Messages = ({ mainUser, chatSelected, chatUsers, handleUserUpdate }) => {
   const scrollTo = useRef();
   const [textValue, setTextValue] = useState("");
   const [messageError, setMessageError] = useState(false);
-  const [fakeMessage, setFakeMessage] = useState({});
+  const { api } = useFetch(apiUrl, headers);
 
   const setInputValue = (value) => {
     setTextValue(value);
   };
+
   const setErrorMessageState = (value) => {
     setMessageError(value);
   };
@@ -33,10 +34,6 @@ const Messages = ({ mainUser, chatSelected, chatUsers }) => {
     .slice()
     .sort((a, b) => moment(b.sentTime).diff(a.sentTime));
 
-  useEffect(() => {
-    setFakeMessage(fakeMessage);
-  }, [chatSelected, fakeMessage]);
-
   // Message updates to API
   const updateApiData = async (messageToAdd) => {
     if (messageToAdd.sentText.length > 0) {
@@ -46,20 +43,7 @@ const Messages = ({ mainUser, chatSelected, chatUsers }) => {
         to: mainUser.id,
       };
       chatSelected.allMessages.push(fakeMessage);
-      await axios
-        .put(apiUrl, chatUsers, {
-          headers: headers,
-        })
-        .then((response) => {
-          if (response.ok) {
-            setMessageError(false);
-            return true;
-          }
-        })
-        .catch((error) => {
-          setMessageError(true);
-          return false;
-        });
+      api.putData(chatUsers);
     }
   };
 
@@ -70,6 +54,7 @@ const Messages = ({ mainUser, chatSelected, chatUsers }) => {
     if (textValue !== null || textValue.length > 0) {
       sendMessage(textValue, chatSelected.id);
     } else {
+      setMessageError(true);
       return false;
     }
   };

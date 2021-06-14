@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import { connect } from "react-redux";
 
 import Sidebar from "./Sidebar/Sidebar";
@@ -8,13 +7,15 @@ import Error from "../Error/Error";
 import Profile from "../Profile/Profile";
 import Loading from "../Loading/Loading";
 import { apiUrl, headers } from "../../js/apiSettings";
-import { LOADING } from "../../actions";
+import useFetch from "../../js/useFetch";
 
-const ChatApp = ({ dispatch, isLoading }) => {
-  const [chatUsers, setChatUsers] = useState({});
+const ChatApp = ({ isLoading, isError }) => {
+  const [chatUsers, setChatUsers] = useState([]);
   const [chatSelected, setChatSelected] = useState({});
   const [mainUser, setMainUser] = useState({});
   const [editProfile, setEditProfile] = useState(false);
+
+  const { data } = useFetch(apiUrl, headers);
 
   // Sets state for the selected user by id
   const selectChat = (userId) => {
@@ -33,7 +34,7 @@ const ChatApp = ({ dispatch, isLoading }) => {
   };
 
   // Filters the main user
-  const filterAndSetUsers = (userObject) => {
+  const filterAndSetMainUser = (userObject) => {
     setChatUsers(userObject);
     const mainUser = { ...userObject.filter((user) => user.mainUser === true) };
     setMainUser(mainUser[0]);
@@ -43,26 +44,18 @@ const ChatApp = ({ dispatch, isLoading }) => {
     setEditProfile(!editProfile);
   };
 
+  const handleUserUpdate = (tempUsers) => {
+    filterAndSetMainUser(tempUsers);
+  };
+
   useEffect(() => {
-    // Fetching the first data from API
-    const getUsersData = async (url) => {
-      await axios
-        .get(url, {
-          headers: headers,
-        })
-        .then((response) => {
-          filterAndSetUsers(response.data);
-          dispatch({ type: LOADING, payload: false });
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    };
-    getUsersData(apiUrl);
-  }, [dispatch]);
+    filterAndSetMainUser(data);
+  }, [chatSelected, data]);
 
   if (isLoading) {
     return <Loading />;
+  } else if (isError) {
+    return <Error />;
   }
 
   return (
@@ -80,12 +73,14 @@ const ChatApp = ({ dispatch, isLoading }) => {
           chatSelected={chatSelected}
           mainUser={mainUser}
           chatUsers={chatUsers}
+          handleUserUpdate={handleUserUpdate}
         />
       )}
     </>
   );
 };
 const mapStateToProps = (state) => {
-  return { isLoading: state.isLoading };
+  const { isLoading, isError } = state;
+  return { isLoading, isError };
 };
 export default connect(mapStateToProps)(ChatApp);
